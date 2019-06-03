@@ -33,3 +33,8 @@ void draw() {
   scroller.update();
   side.update();
 }
+
+
+void keyPressed(){
+ if(key == 'p') saveFrame(); 
+}
