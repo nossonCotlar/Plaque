@@ -6,15 +6,14 @@ void setup() {
   noStroke();
   
   
-  s = new Scroller("/resources/test.txt");
+  s = new Scroller("/resources/test.txt", 0, 100, 100, 700, 700, 35, 2);
 }
 
 void draw() {
   background(255);
-  fill(100);
-  square(s.x, s.y, (s.textSize + s.offset) * 22);
-  s.scrollDown();
-  s.show();
+ 
+
+  s.update();
   
 
   
