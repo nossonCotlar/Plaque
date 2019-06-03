@@ -2,7 +2,7 @@ Scroller s;
 
 void setup() {
   fullScreen();
-  rectMode(CENTER);
+  rectMode(CORNER);
   noStroke();
   
   
@@ -11,9 +11,11 @@ void setup() {
 
 void draw() {
   background(255);
+  fill(100);
+  square(s.x, s.y, (s.textSize + s.offset) * 22);
   s.scrollDown();
   s.show();
-  square(s.x, s.y, s.textSize);
+  
 
   
 }
