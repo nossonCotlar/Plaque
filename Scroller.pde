@@ -1,4 +1,4 @@
-class Scroller {  //<>// //<>//
+class Scroller { //<>//
   PFont font;
   float x, y, sizeX, sizeY;
   float cx, cy;
