@@ -6,11 +6,9 @@ class Scroller {  //<>// //<>//
   StringList lines;
   color textFill;
   float textSize, offset;
-  int mode;
 
 
-  Scroller(String s, int mode, int x, int y, int sizeX, int sizeY, int textSize, int speed) {
-    this.mode = mode;
+  Scroller(String s, int x, int y, int sizeX, int sizeY, int textSize, int speed) {
     lines = new StringList();
     this.x = x;
     this.y = y;
@@ -22,8 +20,7 @@ class Scroller {  //<>// //<>//
     offset = 5;
     this.scrollSpeed = speed;
     textFill = color(0);
-    if (this.mode == 0)
-      generateFromFile(s);
+    generateFromFile(s);
       
   }
 
@@ -33,6 +30,8 @@ class Scroller {  //<>// //<>//
       cy = y + sizeY; //reset it
     }
   }
+  
+
 
   void show() {
     textSize(textSize);
@@ -46,7 +45,7 @@ class Scroller {  //<>// //<>//
 
   void showBox() {
     fill(200);
-    rect(x - offset * 2, y, x + sizeX - 500, y + sizeY, 10);
+    rect(x - offset * 2, y, sizeX, sizeY + textSize * 2, 10);
   }
 
   void update() {
@@ -59,7 +58,7 @@ class Scroller {  //<>// //<>//
     String[] input = loadStrings(s);
     String temp = input[0];
     int spaceIdx = 0;
-    int charPerLine = int(sizeX / (textSize - 10) * 2); //determines appropriate number of characters per lines based on textbox size
+    int charPerLine = int(sizeX / (textSize ) * 2); //determines appropriate number of characters per lines based on textbox size
 
     for (int i = 0; i < input.length; i++) { //loops through lines of original input
       temp = input[i];
