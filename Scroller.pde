@@ -1,4 +1,4 @@
-class Scroller { //<>// //<>// //<>// //<>//
+class Scroller {  //<>// //<>//
   PFont font;
   float x, y, sizeX, sizeY;
   float cx, cy;
@@ -24,6 +24,7 @@ class Scroller { //<>// //<>// //<>// //<>//
     textFill = color(0);
     if (this.mode == 0)
       generateFromFile(s);
+      
   }
 
   void scrollDown() {
@@ -38,14 +39,14 @@ class Scroller { //<>// //<>// //<>// //<>//
     fill(textFill);
     int i = int((y - cy) / (textSize + offset)) + 2; //cut off extra lines that are past the threshold that we don't need to print
     if (i < 0) i = 0; //dont do that ^ if it's negative, for obvious array reasons
-    for (; i < lines.size() && cy + (i - 2) * (textSize + offset) <= y + sizeY; i++) {
+    for (; i < lines.size() && cy + (i - 2) * (textSize + offset) < y + sizeY - textSize; i++) {
       text(lines.get(i), cx, cy + (i * (textSize + offset)));
     }
   }
 
   void showBox() {
     fill(200);
-    rect(x, y, x + sizeX, y + sizeY);
+    rect(x - offset * 2, y, x + sizeX - 500, y + sizeY, 10);
   }
 
   void update() {
@@ -58,7 +59,7 @@ class Scroller { //<>// //<>// //<>// //<>//
     String[] input = loadStrings(s);
     String temp = input[0];
     int spaceIdx = 0;
-    int charPerLine = int(sizeX / (textSize) * 2); //determines appropriate number of characters per lines based on textbox size
+    int charPerLine = int(sizeX / (textSize - 10) * 2); //determines appropriate number of characters per lines based on textbox size
 
     for (int i = 0; i < input.length; i++) { //loops through lines of original input
       temp = input[i];
