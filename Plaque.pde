@@ -1,14 +1,6 @@
 // Nosson Cotlar
 // Copyright 2019
 
-
-
-Scroller scroller;
-SideScroller side;
-TextBox text1;
-TextBox text2;
-SlideShow slide;
-
 Theme theme;
 
 void setup() {
@@ -22,7 +14,7 @@ void setup() {
 void draw() {
   background(255);
 
-theme.update();
+  theme.update();
 
   println(mouseX , ' ' , mouseY);
   
