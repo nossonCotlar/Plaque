@@ -4,12 +4,13 @@ class SlideShow {
   PImage[] pics;
   int amount, current;
   double counter, check;
-  float x, y, sizeX, sizeY, speed;
+  float x, y, sizeX, sizeY, speed, offset;
 
   SlideShow(String path, int x, int y, int sizeX, int sizeY, int speed) {
     current = 0;
     counter = 0;
     check = 0;
+    offset = 10;
     this.x = x;
     this.y = y;
     this.sizeX = sizeX;
@@ -26,7 +27,15 @@ class SlideShow {
   }
 
   void show() {
+    fill(200);
+    showBox();
+    
     image(pics[current], x, y);
+    
+  }
+  
+  void showBox(){
+   rect(x - offset, y - offset, sizeX + offset * 2, sizeY + offset * 2, 10); 
   }
 
   void change() {
@@ -51,6 +60,9 @@ class SlideShow {
   void resizeImages() {
     for (int i = 0; i < amount; i++) {
       pics[i].resize(int(sizeX), 0);
+      if (pics[i].height > sizeY){
+      pics[i].resize(0, int(sizeY));
+      }
     }
   }
 }
