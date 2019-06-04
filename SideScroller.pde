@@ -51,7 +51,7 @@ class SideScroller {
         push += pushAmount;
         circle(cx + push - bw, cy - textSize / 2 + 10, 20);
       }
-      if(cx + push == ox){ //if the current drawing location is where the original was, we can perform a seamless reset
+      if(cx + push <= ox){ //if the current drawing location is where the original was, we can perform a seamless reset
        for (int i = 0; i < lines.length; i++) {
         text(lines[i], cx + push, cy); 
         pushAmount = lines[i].length() * textSize / 2 + bw;

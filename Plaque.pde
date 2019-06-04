@@ -7,6 +7,7 @@ Scroller scroller;
 SideScroller side;
 TextBox text1;
 TextBox text2;
+SlideShow slide;
 
 void setup() {
   fullScreen();
@@ -15,11 +16,11 @@ void setup() {
 
 
   scroller = new Scroller("/resources/scrollTest.txt", 1050, 50, 800, 700, 35, 1);
-  
   text1 = new TextBox("/resources/textTest.txt", 100, 50, 500, 350, 45);
   text2 = new TextBox("/resources/textTest2.txt", 100, 500, 500, 300, 45);
-  
   side = new SideScroller("/resources/sideTest.txt", 100, 900, width - 200, 65, 45, 3);
+  
+  slide = new SlideShow("/resources/pics/", width / 2, height / 2, 300, 300, 1);
 }
 
 void draw() {
@@ -27,11 +28,13 @@ void draw() {
 
 
 
-  text1.update();
-  text2.update();
-
-  scroller.update();
-  side.update();
+  //text1.update();
+  //text2.update();
+  //scroller.update();
+  //side.update();
+  
+  slide.update();
+  
 }
 
 
