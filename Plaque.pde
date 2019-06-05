@@ -2,26 +2,29 @@
 // Copyright 2019
 
 Theme theme;
-//PFont font;
-
 
 void setup() {
   fullScreen();
   frameRate(60);
   rectMode(CORNER);
   noStroke();
-  //font = loadFont("font.vlw");
-  //textFont(font);
+  textSize(50);
+  fill(0);
+ 
+  thread("init");
   
-  theme = new Theme("/resources/theme/theme1.png");
   
 }
 
 void draw() {
-  background(255);
-  theme.update();
+  background(200);
   
-
+  if(theme != null)
+  theme.update();
+  else
+  text("Please Wait...", width / 2 - 200, height / 2);
+  
+  updateCheck();
   
   
   println(mouseX , ' ' , mouseY);
@@ -31,4 +34,15 @@ void draw() {
 
 void keyPressed(){
  if(key == 'p') saveFrame(); 
+ if(key == 'r') thread("init");
+}
+
+ void init(){
+  theme = new Theme("/resources/theme/theme1.png");
+}
+
+void updateCheck(){
+ if (hour() == 0 && minute() == 0 && second() == 0){
+  thread("init");
+ }
 }

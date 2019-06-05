@@ -31,7 +31,7 @@ class Theme {
     slide.update();
     clock.update();
 
-    //show();
+    show();
   }
 
   void show() {
