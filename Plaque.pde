@@ -3,19 +3,24 @@
 
 Theme theme;
 
+
 void setup() {
   fullScreen();
+  frameRate(60);
   rectMode(CORNER);
   noStroke();
   
   theme = new Theme("/resources/theme/theme.png");
+  
 }
 
 void draw() {
   background(255);
-
   theme.update();
+  
 
+  
+  
   println(mouseX , ' ' , mouseY);
   
 }
