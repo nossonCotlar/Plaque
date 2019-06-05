@@ -6,6 +6,7 @@ class Scroller { //<>// //<>//
   StringList lines;
   color textFill;
   float textSize, offset;
+  boolean small;
 
 
   Scroller(String s, int x, int y, int sizeX, int sizeY, int textSize, float speed) {
@@ -22,7 +23,8 @@ class Scroller { //<>// //<>//
     this.scrollSpeed = speed;
     textFill = color(0);
     generateFromFile(s);
-    if(lines.size() * (textSize + offset) < sizeY) this.scrollSpeed = 0;
+    small = (lines.size() * (textSize + offset) < sizeY); //set as small if number of lines can fit in frame
+    if(small) cy = y + (sizeY - lines.size() * (textSize + offset)) / 2 + offset; //center the text in the middle of the fame
   }
 
   void scrollDown() {
@@ -32,9 +34,19 @@ class Scroller { //<>// //<>//
     }
   }
 
-
+  void showSmall() {
+    textSize(textSize);
+    fill(textFill);
+    for (int i = 0; i < lines.size(); i++) {
+      text(lines.get(i), x, cy + i * (textSize + offset));
+    }
+  }
 
   void show() {
+    if (small) {
+      showSmall(); //we dont need to scroll if the text segment is small
+      return;
+    }
     textSize(textSize);
     fill(textFill);
     int i = 0;
@@ -61,7 +73,8 @@ class Scroller { //<>// //<>//
 
   void update() {
     showBox();
-    scrollDown();
+    if (!small) scrollDown();
+      
     show();
     //showBlockers();
   }

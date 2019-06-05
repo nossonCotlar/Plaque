@@ -41,17 +41,17 @@ String getZmanim(String s) {
   int start, end;
   String[] headings = 
     {
-    "Dawn (Alot Hashachar) - ", 
-    "Earliest Tallit and Tefillin (Misheyakir) - ", 
+    //"Dawn (Alot Hashachar) - ", 
+   // "Earliest Tallit and Tefillin (Misheyakir) - ", 
     "Sunrise (Hanetz Hachamah) - ", 
     "Latest Shema - ", 
-    "Latest Shacharit - ", 
-    "Midday (Chatzot Hayom) - ", 
-    "Earliest Mincha (Mincha Gedolah) - ", 
-    "Plag Hamincha (“Half of Mincha”) - ", 
+   // "Latest Shacharit - ", 
+   // "Midday (Chatzot Hayom) - ", 
+   // "Earliest Mincha (Mincha Gedolah) - ", 
+   // "Plag Hamincha (“Half of Mincha”) - ", 
     "Sunset (Shkiah) - ", 
     "Nightfall (Tzeit Hakochavim) - ", 
-    "Midnight (Chatzot HaLailah) - "
+   // "Midnight (Chatzot HaLailah) - "
   };
 
   for (int i = 0; i < headings.length; i++) {

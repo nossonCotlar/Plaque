@@ -55,10 +55,10 @@ class Theme {
   void initZmanim() {
     try {
       saveZmanim(readURLFromFile("/resources/data/url.txt"), "/resources/times.txt");
-      times = new Scroller("/resources/times.txt", 630, 550, 1000, 300, 30, .7);
+      times = new Scroller("/resources/times.txt", 630, 587, 750, 300, 30, .7);
     } 
     catch(Exception e) {
-      times = new Scroller("/resources/data/error.txt", 630, 550, 1000, 300, 30, .7);
+      times = new Scroller("/resources/data/error.txt", 630, 587, 750, 300, 30, .7);
     }
   }
   void initSlideShow() {
