@@ -27,12 +27,12 @@ void makeFile(String src, String dest) {
   saveStrings(dest, t);
 }
 
-void saveZmanim() {
-  String text = getTextFromRSS("http://www.chabad.org/tools/rss/zmanim.xml?locationId=247&locationType=1&bDef=0&before=40");
+void saveZmanim(String url, String path) {
+  String text = getTextFromRSS(url);
 
   String t = getZmanim(text);
 
-  makeFile(t, "/resources/times.txt");
+  makeFile(t, path);
 }
 
 String getZmanim(String s) {
