@@ -6,7 +6,7 @@ class SlideShow {
   double counter, check;
   float x, y, sizeX, sizeY, speed, offset;
 
-  SlideShow(String path, int x, int y, int sizeX, int sizeY, int speed) {
+  SlideShow(String path, int x, int y, int sizeX, int sizeY, int speed) throws Exception{
     current = 0;
     counter = 0;
     check = 0;
@@ -18,6 +18,7 @@ class SlideShow {
     this.speed = speed;
 
     loadImages(path);
+    if (amount == 0) throw new Exception("no images in folder");
     resizeImages();
   }
 
