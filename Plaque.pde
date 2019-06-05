@@ -10,7 +10,7 @@ void setup() {
   rectMode(CORNER);
   noStroke();
   
-  theme = new Theme("/resources/theme/theme.png");
+  theme = new Theme("/resources/theme/theme1.png");
   
 }
 

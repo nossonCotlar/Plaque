@@ -4,12 +4,15 @@ class Theme {
   //textBox text;
   SlideShow slide;
   SideScroller sideScroll;
+  Clock clock;
 
   Theme(String path) {
     bg = loadImage(path);
     fit();
-    
+
     saveZmanim();
+
+    clock = new Clock(890, 930);
 
     slide = new SlideShow("/resources/pics/", 650, 100, 750, 430, 3);
     scroll3 = new Scroller("/resources/times.txt", 630, 550, 1000, 300, 30, .7);
@@ -21,11 +24,13 @@ class Theme {
   void update() {
     background(200);
 
+    
     scroll3.update();
     scroll1.update();
     scroll2.update();
     sideScroll.update();
     slide.update();
+    clock.update();
 
     show();
   }
