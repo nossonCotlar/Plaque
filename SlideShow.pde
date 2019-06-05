@@ -31,7 +31,7 @@ class SlideShow {
     fill(200);
     showBox();
     
-    image(pics[current], x, y);
+    image(pics[current], x + (sizeX - pics[current].width) / 2, y);
     
   }
   

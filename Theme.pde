@@ -10,7 +10,7 @@ class Theme {
     bg = loadImage(path);
     fit();
 
-    clock = new Clock(890, 930);
+    clock = new Clock(884, 874, 190, 90);
 
 
     initZmanim();
@@ -31,7 +31,7 @@ class Theme {
     slide.update();
     clock.update();
 
-    show();
+    //show();
   }
 
   void show() {
@@ -63,7 +63,7 @@ class Theme {
   }
   void initSlideShow() {
     try {
-      slide = new SlideShow("/resources/pics/", 650, 100, 750, 430, 3);
+      slide = new SlideShow("/resources/pics/", 613, 130, 731, 398, 3);
     } 
     catch(Exception e) {
       try {

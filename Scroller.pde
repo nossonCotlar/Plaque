@@ -22,6 +22,7 @@ class Scroller { //<>// //<>//
     this.scrollSpeed = speed;
     textFill = color(0);
     generateFromFile(s);
+    if(lines.size() * (textSize + offset) < sizeY) this.scrollSpeed = 0;
   }
 
   void scrollDown() {
@@ -62,7 +63,7 @@ class Scroller { //<>// //<>//
     showBox();
     scrollDown();
     show();
-    showBlockers();
+    //showBlockers();
   }
 
   void generateFromFile(String s) { //this takes a file which isn't necessarily spaced to fit the text box size, and attempts to size it properly

@@ -1,12 +1,15 @@
 class Clock{
   int s, m, h;
-  float x, y;
+  float x, y, sizeX, sizeY;
   String time;
+  int textSize = 37;
   
-  
- Clock(float x, float y){
+ Clock(float x, float y, float sizeX, float sizeY){
    this.x = x;
    this.y = y;
+   this.sizeX = sizeX;
+   this.sizeY = sizeY;
+  
    s = second();
    m = minute();
    h = hour();
@@ -27,10 +30,16 @@ class Clock{
  }
  
  void show(){
+   showBox();
    fill(0);
-   textSize(37);
-   text(time, x, y);
+   textSize(textSize);
+   text(time, x + textSize / 4, y + textSize * 1.5);
    
+ }
+ 
+ void showBox(){
+   fill(200);
+   rect(x, y, sizeX, sizeY);
  }
  
 }
