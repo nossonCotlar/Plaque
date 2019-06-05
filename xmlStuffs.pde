@@ -5,6 +5,12 @@ String getTextFromRSS(String url) {
   return extractXMLFromString(getRSS(url));
 }
 
+String readURLFromFile(String file) {
+  String[] l = new String[1];
+
+  l = loadStrings(file);
+  return l[0];
+}
 
 String getRSS(String url) { //gets the XML content of a given URL and returns a string with its contents
   String[] l = new String[1];
@@ -27,6 +33,37 @@ void makeFile(String src, String dest) {
   saveStrings(dest, t);
 }
 
+void saveDailyQuote(String url, String path) {
+  String text = getTextFromRSS(url);
+
+  String t = getDailyQuote(text);
+
+  makeFile(t, path);
+}
+
+String getDailyQuote(String s) {
+  String r = new String();
+  String t = s;
+  int start, end;
+  String[] headings = 
+    {
+    "Daily Quote: " 
+
+  };
+
+  for (int i = 0; i < headings.length; i++) {
+    start = t.indexOf(headings[i]);
+    if (start != -1) {
+      t = t.substring(start);
+      end = t.indexOf(" EST");
+      r += t.substring(0, end - 25) + '\n';
+    }
+  }
+
+
+  return r;
+}
+
 void saveZmanim(String url, String path) {
   String text = getTextFromRSS(url);
 
@@ -42,16 +79,16 @@ String getZmanim(String s) {
   String[] headings = 
     {
     //"Dawn (Alot Hashachar) - ", 
-   // "Earliest Tallit and Tefillin (Misheyakir) - ", 
+    // "Earliest Tallit and Tefillin (Misheyakir) - ", 
     "Sunrise (Hanetz Hachamah) - ", 
     "Latest Shema - ", 
-   // "Latest Shacharit - ", 
-   // "Midday (Chatzot Hayom) - ", 
-   // "Earliest Mincha (Mincha Gedolah) - ", 
-   // "Plag Hamincha (“Half of Mincha”) - ", 
+    // "Latest Shacharit - ", 
+    // "Midday (Chatzot Hayom) - ", 
+    // "Earliest Mincha (Mincha Gedolah) - ", 
+    // "Plag Hamincha (“Half of Mincha”) - ", 
     "Sunset (Shkiah) - ", 
     "Nightfall (Tzeit Hakochavim) - ", 
-   // "Midnight (Chatzot HaLailah) - "
+    // "Midnight (Chatzot HaLailah) - "
   };
 
   for (int i = 0; i < headings.length; i++) {
@@ -63,6 +100,6 @@ String getZmanim(String s) {
     }
   }
 
-  
+
   return r;
 }

@@ -15,7 +15,7 @@ class Theme {
 
     initZmanim();
     initSlideShow();
-    scroll1 = new Scroller("/resources/scroll2.txt", 45, 80, 340, 730, 25, 2);
+    initHayom();
     scroll2 = new Scroller("/resources/scroll1.txt", 1600, 75, 300, 730, 25, 1);
     sideScroll = new SideScroller("/resources/sideTest.txt", 20, 990, width - 20, 65, 25, 3);
   }
@@ -44,12 +44,7 @@ class Theme {
     }
   }
 
-  String readURLFromFile(String file) {
-    String[] l = new String[1];
 
-    l = loadStrings(file);
-    return l[0];
-  }
 
 
   void initZmanim() {
@@ -61,6 +56,7 @@ class Theme {
       times = new Scroller("/resources/data/error.txt", 630, 587, 750, 300, 30, .7);
     }
   }
+  
   void initSlideShow() {
     try {
       slide = new SlideShow("/resources/pics/", 613, 130, 731, 398, 3);
@@ -72,6 +68,16 @@ class Theme {
       catch(Exception f) {
         println("nothing here, sorry");
       }
+    }
+  }
+  
+  void initHayom(){
+    try {
+      saveDailyQuote("https://www.chabad.org/tools/rss/dailyquote_rss.xml", "/resources/quote.txt");
+      scroll1 = new Scroller("/resources/quote.txt", 45, 80, 340, 730, 25, 2);
+    } 
+    catch(Exception e) {
+      scroll1 = new Scroller("/resources/data/error.txt", 45, 80, 340, 730, 25, 2);
     }
   }
 }

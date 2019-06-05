@@ -87,6 +87,7 @@ class Scroller { //<>// //<>//
 
     for (int i = 0; i < input.length; i++) { //loops through lines of original input
       temp = input[i];
+      
       while (temp.length() > charPerLine) { //while the current line's length is too large
         while (spaceIdx < charPerLine) { 
           int t = temp.indexOf(' ', spaceIdx + 1); //locate the nearest space in the text
