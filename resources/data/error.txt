@@ -1,0 +1,5 @@
+ERROR
+We couldn't access the path or URL that was specified. 
+Try checking you internet connection.
+If the problem persists, contact support at 
+nossoncotlar@gmail.com
