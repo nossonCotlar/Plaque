@@ -1,4 +1,0 @@
-This is a test
-for the Side-Scrolling class
-Who knows if it'll work
-I guess we'll have to see
