@@ -23,7 +23,9 @@ void draw() {
   theme.update();
   else {
     background(backColor);
-  text("Please Wait...", width / 2 - 200, height / 2);
+    textAlign(CENTER);
+  text("Updating Information, Please Wait...", width / 2 , height / 2);
+  textAlign(LEFT);
   }
   
   updateCheck();

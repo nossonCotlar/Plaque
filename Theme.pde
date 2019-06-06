@@ -10,7 +10,7 @@ class Theme {
     bg = loadImage(path);
     fit();
 
-    clock = new Clock(884, 874, 190, 90);
+    clock = new Clock(884, 874, 180, 71);
 
 
     initZmanim();

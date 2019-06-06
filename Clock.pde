@@ -33,7 +33,9 @@ class Clock{
    showBox();
    fill(0);
    textSize(textSize);
-   text(time, x + textSize / 4, y + textSize * 1.5);
+   textAlign(CENTER, CENTER);
+   text(time, x + sizeX / 2, y + sizeY / 2);
+   textAlign(LEFT);
    
  }
  
