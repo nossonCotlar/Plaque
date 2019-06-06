@@ -1,6 +1,6 @@
 // Nosson Cotlar
 // Copyright 2019
-
+final color backColor = color(200);
 Theme theme;
 
 void setup() {
@@ -21,8 +21,10 @@ void draw() {
   
   if(theme != null)
   theme.update();
-  else
+  else {
+    background(backColor);
   text("Please Wait...", width / 2 - 200, height / 2);
+  }
   
   updateCheck();
   

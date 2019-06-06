@@ -38,7 +38,7 @@ class Clock{
  }
  
  void showBox(){
-   fill(200);
+   fill(backColor);
    rect(x, y, sizeX, sizeY);
  }
  

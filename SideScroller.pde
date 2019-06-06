@@ -62,16 +62,10 @@ class SideScroller {
         push = 0;
       }
     }
-
-
-
-    fill(255);
-    rect(0, y, x - offset * 2, sizeY + offset * 2);
-    rect(x - offset * 2 + sizeX, y, 900, 400);
   }
 
   void showBox() {
-    fill(200);
+    fill(backColor);
     rect(x - offset * 2, y, sizeX, sizeY + offset * 2, 10);
   }
 }

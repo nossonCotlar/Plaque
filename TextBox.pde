@@ -30,7 +30,7 @@ class TextBox{
  }
  
  void showBox(){
-   fill(200);
+   fill(backColor);
    rect(x - offset * 2, y, sizeX + offset * 4, sizeY + offset * 2 , 10);
  }
  

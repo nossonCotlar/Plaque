@@ -75,12 +75,12 @@ class Scroller { //<>// //<>//
   }
 
   void showBox() {
-    fill(200);
+    fill(backColor);
     rect(x - textSize * 2, y - textSize * 2, sizeX + textSize * 2, sizeY + textSize * 2, 10);
   }
 
   void showBlockers() {
-    fill(200);
+    fill(backColor);
     rect(0, 0, width, y);
     rect(0, y + sizeY + textSize * 2, width, height - y + sizeY + textSize * 2);
   }

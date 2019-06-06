@@ -29,13 +29,12 @@ class SlideShow {
   }
 
   void show() {
-    fill(200);
     showBox();
-
     image(pics[current], x + (sizeX - pics[current].width) / 2, y);
   }
 
   void showBox() {
+    fill(backColor);
     rect(x - offset, y - offset, sizeX + offset * 2, sizeY + offset * 2, 10);
   }
 
