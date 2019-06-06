@@ -7,6 +7,7 @@ class Scroller { //<>// //<>//
   color textFill;
   float textSize, offset;
   boolean small;
+  boolean stop;
 
 
   Scroller(String s, int x, int y, int sizeX, int sizeY, int textSize, float speed) {
@@ -23,8 +24,9 @@ class Scroller { //<>// //<>//
     this.scrollSpeed = speed;
     textFill = color(0);
     generateFromFile(s);
+    stop = false;
     small = (lines.size() * (textSize + offset) < sizeY); //set as small if number of lines can fit in frame
-    if(small) cy = y + (sizeY - lines.size() * (textSize + offset)) / 2 + offset; //center the text in the middle of the fame
+    if (small) cy = y + (sizeY - lines.size() * (textSize + offset)) / 2 + offset; //center the text in the middle of the fame
   }
 
   void scrollDown() {
@@ -43,17 +45,29 @@ class Scroller { //<>// //<>//
   }
 
   void show() {
-    if (small) {
-      showSmall(); //we dont need to scroll if the text segment is small
-      return;
-    }
+
     textSize(textSize);
     fill(textFill);
-    int i = 0;
-    for (; i < lines.size() /* && cy + (i - 2) * (textSize + offset) < y + sizeY - textSize*/; i++) {
-      text(lines.get(i), cx, cy + (i * (textSize + offset)));
+    if (small) {
+
+      if (!stop) { //makes sire we don't draw text unecessarily
+       
+        showSmall(); //we dont need to scroll if the text segment is small
+        stop = true;
+      }
+
+      return;
+    }
+    
+
+    for (int i = 0; i < lines.size() /* && cy + (i - 2) * (textSize + offset) < y + sizeY - textSize*/; i++) {
+      float ty = cy + (i * (textSize + offset));
+      if (ty < y + sizeY + textSize * 3 && ty > y - textSize * 3)
+        text(lines.get(i), cx, ty);
       //text(lines.get(i), cx, cy  + (i * (textSize + offset)) + (lines.size() * (textSize + offset)));
-      text(lines.get(i), cx, cy  + (i * (textSize + offset)) - (lines.size() * (textSize + offset)));
+      ty = cy  + (i * (textSize + offset)) - (lines.size() * (textSize + offset));
+      if (ty < y + sizeY + textSize * 3 && ty > y - textSize * 3)
+        text(lines.get(i), cx, ty);
       if (cy  + (i * (textSize + offset)) + (lines.size() * (textSize + offset)) <= oy) {
         cy = oy;
       }
@@ -62,7 +76,7 @@ class Scroller { //<>// //<>//
 
   void showBox() {
     fill(200);
-    rect(x - offset * 2, y, sizeX, sizeY + textSize * 2, 10);
+    rect(x - textSize * 2, y - textSize * 2, sizeX + textSize * 2, sizeY + textSize * 2, 10);
   }
 
   void showBlockers() {
@@ -72,9 +86,9 @@ class Scroller { //<>// //<>//
   }
 
   void update() {
-    showBox();
+    if(!stop) showBox();
     if (!small) scrollDown();
-      
+
     show();
     //showBlockers();
   }
@@ -87,7 +101,7 @@ class Scroller { //<>// //<>//
 
     for (int i = 0; i < input.length; i++) { //loops through lines of original input
       temp = input[i];
-      
+
       while (temp.length() > charPerLine) { //while the current line's length is too large
         while (spaceIdx < charPerLine) { 
           int t = temp.indexOf(' ', spaceIdx + 1); //locate the nearest space in the text

@@ -16,12 +16,12 @@ class Theme {
     initZmanim();
     initSlideShow();
     initHayom();
-    scroll2 = new Scroller("/resources/scroll1.txt", 1600, 75, 300, 730, 25, 1);
+    scroll2 = new Scroller("/resources/scroll1.txt", 1600, 123, 300, 730, 25, 1);
     sideScroll = new SideScroller("/resources/sideTest.txt", 20, 990, width - 20, 65, 25, 3);
   }
 
   void update() {
-    background(200);
+    //background(200);
 
 
     times.update();

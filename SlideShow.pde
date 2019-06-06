@@ -5,12 +5,14 @@ class SlideShow {
   int amount, current;
   double counter, check;
   float x, y, sizeX, sizeY, speed, offset;
+  boolean stop;
 
-  SlideShow(String path, int x, int y, int sizeX, int sizeY, int speed) throws Exception{
+  SlideShow(String path, int x, int y, int sizeX, int sizeY, int speed) throws Exception {
     current = 0;
     counter = 0;
     check = 0;
     offset = 10;
+    stop = false;
     this.x = x;
     this.y = y;
     this.sizeX = sizeX;
@@ -24,19 +26,17 @@ class SlideShow {
 
   void update() {
     change();
-    show();
   }
 
   void show() {
     fill(200);
     showBox();
-    
+
     image(pics[current], x + (sizeX - pics[current].width) / 2, y);
-    
   }
-  
-  void showBox(){
-   rect(x - offset, y - offset, sizeX + offset * 2, sizeY + offset * 2, 10); 
+
+  void showBox() {
+    rect(x - offset, y - offset, sizeX + offset * 2, sizeY + offset * 2, 10);
   }
 
   void change() {
@@ -44,8 +44,9 @@ class SlideShow {
     if (counter - check >= speed * frameRate) {
       check = counter;
       current++;
+      if (current >= amount) current = 0;
+      show(); //we call show only when the picture changes to mak sure we don't draw when it's necessary
     }
-    if (current >= amount) current = 0;
   }
 
   void loadImages(String path) {
@@ -61,8 +62,8 @@ class SlideShow {
   void resizeImages() {
     for (int i = 0; i < amount; i++) {
       pics[i].resize(int(sizeX), 0);
-      if (pics[i].height > sizeY){
-      pics[i].resize(0, int(sizeY));
+      if (pics[i].height > sizeY) {
+        pics[i].resize(0, int(sizeY));
       }
     }
   }

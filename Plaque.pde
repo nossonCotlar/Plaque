@@ -17,7 +17,7 @@ void setup() {
 }
 
 void draw() {
-  background(200);
+  //background(200);
   
   if(theme != null)
   theme.update();
