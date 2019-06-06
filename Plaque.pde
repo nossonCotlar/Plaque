@@ -34,7 +34,10 @@ void draw() {
 
 void keyPressed(){
  if(key == 'p') saveFrame(); 
- if(key == 'r') thread("init");
+ if(key == 'r') {
+   theme = null;
+   thread("init");
+ }
 }
 
  void init(){
