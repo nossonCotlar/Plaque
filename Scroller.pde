@@ -3,7 +3,7 @@ class Scroller { //<>// //<>//
   float x, y, sizeX, sizeY;
   float cx, cy, oy;
   float scrollSpeed;
-  StringList lines;
+
   String[] text;
   color textFill;
   float textSize, offset;
@@ -12,7 +12,7 @@ class Scroller { //<>// //<>//
 
 
   Scroller(String s, int x, int y, int sizeX, int sizeY, int textSize, float speed) {
-    lines = new StringList();
+
     this.x = x;
     this.y = y;
     this.sizeX = sizeX;
@@ -26,13 +26,13 @@ class Scroller { //<>// //<>//
     textFill = color(0);
     generateFromFile(s);
     stop = false;
-    small = (lines.size() * (textSize + offset) < sizeY); //set as small if number of lines can fit in frame
-    if (small) cy = y + (sizeY - lines.size() * (textSize + offset)) / 2 + offset; //center the text in the middle of the fame
+    small = (text.length * (textSize + offset) < sizeY); //set as small if number of lines can fit in frame
+    if (small) cy = y + (sizeY - text.length * (textSize + offset)) / 2 + offset; //center the text in the middle of the fame
   }
 
   void scrollDown() {
     cy -= scrollSpeed;
-    if (cy + (lines.size() * (textSize + offset)) < y ) { //once the last line is above the starting y coordinate
+    if (cy + (text.length * (textSize + offset)) < y ) { //once the last line is above the starting y coordinate
       cy = y + sizeY; //reset it
     }
   }
@@ -40,32 +40,32 @@ class Scroller { //<>// //<>//
   void showSmall() {
     textSize(textSize);
     fill(textFill);
-    for (int i = 0; i < lines.size(); i++) {
-      text(lines.get(i), x, cy + i * (textSize + offset));
+    for (int i = 0; i < text.length; i++) {
+      text(text[i], x, cy + i * (textSize + offset));
     }
   }
 
   void show() {
 
     textSize(textSize);
+    
     fill(textFill);
     if (small) {
 
-      if (!stop) { //makes sire we don't draw text unecessarily
-       
+      if (!stop) { //makes sure we don't draw text unecessarily
+
         showSmall(); //we dont need to scroll if the text segment is small
         stop = true;
       }
 
       return;
     }
-    
 
-    for (int i = 0; i < text.length /* && cy + (i - 2) * (textSize + offset) < y + sizeY - textSize*/; i++) {
+
+    for (int i = 0; i < text.length; i++) {
       float ty = cy + (i * (textSize + offset));
       if (ty < y + sizeY + textSize * 3 && ty > y - textSize * 3)
         text(text[i], cx, ty);
-      //text(lines.get(i), cx, cy  + (i * (textSize + offset)) + (lines.size() * (textSize + offset)));
       ty = cy  + (i * (textSize + offset)) - (text.length * (textSize + offset));
       if (ty < y + sizeY + textSize * 3 && ty > y - textSize * 3)
         text(text[i], cx, ty);
@@ -87,7 +87,7 @@ class Scroller { //<>// //<>//
   }
 
   void update() {
-    if(!stop) showBox();
+    if (!stop) showBox();
     if (!small) scrollDown();
 
     show();
@@ -97,17 +97,19 @@ class Scroller { //<>// //<>//
   void generateFromFile(String s) { //this takes a file which isn't necessarily spaced to fit the text box size, and attempts to size it properly
     String[] input = loadStrings(s);
     String temp = input[0];
+    StringList lines = new StringList();
     int spaceIdx = 0;
-    int charPerLine = int(sizeX / (textSize ) * 2); //determines appropriate number of characters per lines based on textbox size
+
+    textSize(textSize);
 
     for (int i = 0; i < input.length; i++) { //loops through lines of original input
       temp = input[i];
 
-      while (temp.length() > charPerLine) { //while the current line's length is too large
-        while (spaceIdx < charPerLine) { 
+      while (textWidth(temp) > sizeX) { //while the current line's length is too large
+        while (textWidth(temp.substring(0, spaceIdx)) < sizeX) { 
           int t = temp.indexOf(' ', spaceIdx + 1); //locate the nearest space in the text
           if (t == -1) break; //if nothing was found, the line doesnt contain any spaces, so we cant cut it
-          if (t < charPerLine) { //if the space occurs before the maximum character number, we save the index location
+          if (textWidth(temp.substring(0, t)) < sizeX) { //if the space occurs before the maximum character number, we save the index location
             spaceIdx = t;
           } else break; //if it was past the maximum, we use the last space location
         }
@@ -122,11 +124,10 @@ class Scroller { //<>// //<>//
       lines.append(temp);
     }
     //lines.append(temp);
-    
+
     text = new String[lines.size()];
-    for(int i = 0; i < text.length; i++){
-     text[i] = lines.get(i); 
+    for (int i = 0; i < text.length; i++) {
+      text[i] = lines.get(i);
     }
-    
   }
 }
