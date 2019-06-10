@@ -20,7 +20,7 @@ class SideScroller {
     this.textSize = textSize;
     offset = 5;
     this.scrollSpeed = speed;
-    bw = 30;
+    bw = 50;
     textFill = color(0);
     lines = loadStrings(s);
   }
@@ -47,16 +47,16 @@ class SideScroller {
 
       for (int i = 0; i < lines.length; i++) {
         text(lines[i], cx + push, cy); 
-        pushAmount = lines[i].length() * textSize / 2 + bw;
+        pushAmount = textWidth(lines[i]) + bw;
         push += pushAmount;
-        circle(cx + push - bw, cy - textSize / 2 + 5, textSize / 2);
+        circle(cx + push - bw / 2, cy - textSize / 2 + 5, textSize / 2);
       }
       if(cx + push <= ox){ //if the current drawing location is where the original was, we can perform a seamless reset
        for (int i = 0; i < lines.length; i++) {
         text(lines[i], cx + push, cy); 
-        pushAmount = lines[i].length() * textSize / 2 + bw;
+        pushAmount = textWidth(lines[i]) + bw;
         push += pushAmount;
-        circle(cx + push - bw, cy - textSize / 2 + 5, textSize / 2);
+        circle(cx + push - bw / 2, cy - textSize / 2 + 5, textSize / 2);
       }
         cx = ox; //reset the current writing position
         push = 0;
