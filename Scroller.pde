@@ -4,6 +4,7 @@ class Scroller { //<>// //<>//
   float cx, cy, oy;
   float scrollSpeed;
   StringList lines;
+  String[] text;
   color textFill;
   float textSize, offset;
   boolean small;
@@ -60,15 +61,15 @@ class Scroller { //<>// //<>//
     }
     
 
-    for (int i = 0; i < lines.size() /* && cy + (i - 2) * (textSize + offset) < y + sizeY - textSize*/; i++) {
+    for (int i = 0; i < text.length /* && cy + (i - 2) * (textSize + offset) < y + sizeY - textSize*/; i++) {
       float ty = cy + (i * (textSize + offset));
       if (ty < y + sizeY + textSize * 3 && ty > y - textSize * 3)
-        text(lines.get(i), cx, ty);
+        text(text[i], cx, ty);
       //text(lines.get(i), cx, cy  + (i * (textSize + offset)) + (lines.size() * (textSize + offset)));
-      ty = cy  + (i * (textSize + offset)) - (lines.size() * (textSize + offset));
+      ty = cy  + (i * (textSize + offset)) - (text.length * (textSize + offset));
       if (ty < y + sizeY + textSize * 3 && ty > y - textSize * 3)
-        text(lines.get(i), cx, ty);
-      if (cy  + (i * (textSize + offset)) + (lines.size() * (textSize + offset)) <= oy) {
+        text(text[i], cx, ty);
+      if (cy  + (i * (textSize + offset)) + (text.length * (textSize + offset)) <= oy) {
         cy = oy;
       }
     }
@@ -121,5 +122,11 @@ class Scroller { //<>// //<>//
       lines.append(temp);
     }
     //lines.append(temp);
+    
+    text = new String[lines.size()];
+    for(int i = 0; i < text.length; i++){
+     text[i] = lines.get(i); 
+    }
+    
   }
 }

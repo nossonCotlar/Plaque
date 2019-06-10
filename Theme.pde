@@ -1,7 +1,6 @@
 class Theme {
   PImage bg;
   Scroller scroll1, scroll2, times;
-  //textBox text;
   SlideShow slide;
   SideScroller sideScroll;
   Clock clock;
