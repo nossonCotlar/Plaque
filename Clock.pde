@@ -3,12 +3,14 @@ class Clock{
   float x, y, sizeX, sizeY;
   String time;
   int textSize = 37;
+  color textFill;
   
  Clock(float x, float y, float sizeX, float sizeY){
    this.x = x;
    this.y = y;
    this.sizeX = sizeX;
    this.sizeY = sizeY;
+   textFill = color(193, 139, 0);
   
    s = second();
    m = minute();
@@ -30,11 +32,11 @@ class Clock{
  }
  
  void show(){
-   showBox();
-   fill(0);
+   //showBox();
+   fill(textFill);
    textSize(textSize);
    textAlign(CENTER, CENTER);
-   text(time, x + sizeX / 2, y + sizeY / 2);
+   text(time, x, y);
    textAlign(LEFT);
    
  }

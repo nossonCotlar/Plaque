@@ -9,9 +9,10 @@ class Scroller { //<>// //<>//
   float textSize, offset;
   boolean small;
   boolean stop;
+  boolean center;
 
 
-  Scroller(String s, int x, int y, int sizeX, int sizeY, int textSize, float speed) {
+  Scroller(String s, int x, int y, int sizeX, int sizeY, int textSize, float speed, boolean center) {
 
     this.x = x;
     this.y = y;
@@ -23,11 +24,13 @@ class Scroller { //<>// //<>//
     this.textSize = textSize;
     offset = 5;
     this.scrollSpeed = speed;
-    textFill = color(0);
+    textFill = color(193, 139, 0);
     generateFromFile(s);
     stop = false;
     small = (text.length * (textSize + offset) < sizeY); //set as small if number of lines can fit in frame
     if (small) cy = y + (sizeY - text.length * (textSize + offset)) / 2 + offset; //center the text in the middle of the fame
+    this.center = center;
+    if(center) cx = x + sizeX / 2;
   }
 
   void scrollDown() {
@@ -41,7 +44,7 @@ class Scroller { //<>// //<>//
     textSize(textSize);
     fill(textFill);
     for (int i = 0; i < text.length; i++) {
-      text(text[i], x, cy + i * (textSize + offset));
+      text(text[i], cx, cy + i * (textSize + offset));
     }
   }
 
@@ -50,12 +53,14 @@ class Scroller { //<>// //<>//
     textSize(textSize);
     
     fill(textFill);
+    if (center) textAlign(CENTER);
+    else textAlign(LEFT);
     if (small) {
 
       if (!stop) { //makes sure we don't draw text unecessarily
 
         showSmall(); //we dont need to scroll if the text segment is small
-        stop = true;
+        //stop = true;
       }
 
       return;
@@ -73,6 +78,7 @@ class Scroller { //<>// //<>//
         cy = oy;
       }
     }
+    
   }
 
   void showBox() {
@@ -87,7 +93,7 @@ class Scroller { //<>// //<>//
   }
 
   void update() {
-    if (!stop) showBox();
+    //if (!stop) showBox();
     if (!small) scrollDown();
 
     show();

@@ -26,10 +26,11 @@ class SlideShow {
 
   void update() {
     change();
+    show();
   }
 
   void show() {
-    showBox();
+    //showBox();
     image(pics[current], x + (sizeX - pics[current].width) / 2, y);
   }
 
@@ -44,7 +45,7 @@ class SlideShow {
       check = counter;
       current++;
       if (current >= amount) current = 0;
-      show(); //we call show only when the picture changes to mak sure we don't draw when it's necessary
+      //show(); //we call show only when the picture changes to mak sure we don't draw when it's necessary
     }
   }
 

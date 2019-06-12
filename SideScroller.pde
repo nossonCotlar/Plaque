@@ -21,7 +21,7 @@ class SideScroller {
     offset = 5;
     this.scrollSpeed = speed;
     bw = 50;
-    textFill = color(0);
+    textFill = color(193, 139, 0);
     lines = loadStrings(s);
   }
 
@@ -36,9 +36,9 @@ class SideScroller {
 
   void show() {
 
-    showBox();
+    //showBox();
     float push = 0, pushAmount;
-    fill(0);
+    fill(textFill);
     textSize(textSize);
 
     for (int j = 0; j < 3; j++) { //run twice so we have some overlap

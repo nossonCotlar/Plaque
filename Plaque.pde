@@ -19,8 +19,10 @@ void setup() {
 void draw() {
   //background(200);
 
-  if (theme != null)
-    theme.update();
+  if (theme != null){
+    background(backColor);
+     theme.update();
+  }
   else {
     if (!stop) {
       background(backColor);
@@ -40,7 +42,7 @@ void draw() {
 
 
 void keyPressed() {
-  if (key == 'p') saveFrame(); 
+  if (key == 'p') saveFrame("save.png"); 
   if (key == 'r') {
     theme = null;
     thread("init");
@@ -48,11 +50,13 @@ void keyPressed() {
 }
 
 void init() {
-  theme = new Theme("/resources/theme/theme1.png");
+  theme = new Theme("/resources/theme/theme.png");
+  background(backColor);
 }
 
 void updateCheck() {
   if (hour() == 0 && minute() == 0 && second() == 0) {
+    theme = null;
     thread("init");
   }
 }
