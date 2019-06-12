@@ -3,6 +3,7 @@
 
 final color backColor = color(200);
 Theme theme;
+boolean stop = false;
 
 void setup() {
   fullScreen();
@@ -21,11 +22,14 @@ void draw() {
   if (theme != null)
     theme.update();
   else {
-    background(backColor);
-    textAlign(CENTER);
-    //textSize(50);
-    text("Updating Information, Please Wait...", width / 2, height / 2);
-    textAlign(LEFT);
+    if (!stop) {
+      background(backColor);
+      textAlign(CENTER);
+      textSize(50);
+      text("Updating Information, Please Wait...", width / 2, height / 2);
+      textAlign(LEFT);
+      stop = true;
+    }
   }
 
   updateCheck();
