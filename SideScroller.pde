@@ -41,7 +41,7 @@ class SideScroller {
     fill(textFill);
     textSize(textSize);
 
-    for (int j = 0; j < 3; j++) { //run twice so we have some overlap
+    for (int j = 0; j < 4; j++) { //run twice so we have some overlap
 
       for (int i = 0; i < lines.length; i++) {
         text(lines[i], cx + push, cy); 

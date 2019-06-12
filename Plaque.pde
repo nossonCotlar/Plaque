@@ -4,12 +4,15 @@
 final color backColor = color(200);
 Theme theme;
 boolean stop = false;
+PFont font;
 
 void setup() {
   fullScreen();
   frameRate(60);
   rectMode(CORNER);
   noStroke();
+  
+
 
   fill(0);
 
@@ -38,6 +41,7 @@ void draw() {
 
 
   println(mouseX, ' ', mouseY);
+  //println(frameRate);
 }
 
 

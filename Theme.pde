@@ -1,6 +1,6 @@
 class Theme {
   PImage bg, behind;
-  Scroller scroll1, scroll2, times;
+  Scroller scroll1, shulTimes, times;
   SlideShow slide;
   SideScroller sideScroll;
   Clock clock;
@@ -16,7 +16,7 @@ class Theme {
     initZmanim();
     initSlideShow();
     initHayom();
-    //scroll2 = new Scroller("/resources/scroll1.txt", 1600, 123, 300, 730, 25, 1);
+    shulTimes = new Scroller("/resources/shulTimes.txt", 1360, 645, 400, 230, 20, .7, true);
     sideScroll = new SideScroller("/resources/sideTest.txt", 0, 995, width, 65, 25, 3);
     background(backColor);
   }
@@ -25,9 +25,9 @@ class Theme {
     //background(200);
 
     showBehind();
+    shulTimes.update();
     times.update();
     scroll1.update();
-    //scroll2.update();
     slide.update();
     show();
     sideScroll.update();
@@ -60,7 +60,7 @@ class Theme {
       times = new Scroller("/resources/times.txt", 1360, 390, 400, 230, 20, .7, true);
     } 
     catch(Exception e) {
-      times = new Scroller("/resources/data/error.txt", 630, 587, 750, 300, 30, .7, true);
+      times = new Scroller("/resources/data/error.txt", 1360, 390, 400, 230, 20, .7, true);
     }
   }
 
@@ -70,7 +70,7 @@ class Theme {
     } 
     catch(Exception e) {
       try {
-        slide = new SlideShow("/resources/data/nothing/", 650, 100, 750, 430, 3);
+        slide = new SlideShow("/resources/data/nothing/", 711, 344, 495, 300, 3);
       } 
       catch(Exception f) {
         println("nothing here, sorry");
@@ -84,7 +84,9 @@ class Theme {
       scroll1 = new Scroller("/resources/quote.txt", 172, 390, 390, 500, 25, 2, false);
     } 
     catch(Exception e) {
-      scroll1 = new Scroller("/resources/data/error.txt", 45, 80, 340, 730, 25, 2, false);
+      scroll1 = new Scroller("/resources/data/error.txt", 172, 390, 390, 500, 25, 2, false);
     }
   }
+  
+
 }

@@ -41,6 +41,24 @@ void saveDailyQuote(String url, String path) {
   makeFile(t, path);
 }
 
+void saveParsha(String url, String path) {
+  String text = getTextFromRSS(url);
+
+  String t = getParsha(text);
+
+  makeFile(t, path);
+}
+
+String getParsha(String s){
+  String parsha = new String();
+  String t = s;
+  int start = t.indexOf("Parsha - ");
+  int end = t.indexOf("http://");
+  parsha = t.substring(start, end);
+  
+  return parsha;
+}
+
 String getDailyQuote(String s) {
   String r = new String();
   String t = s;
@@ -74,6 +92,7 @@ void saveZmanim(String url, String path) {
 
 String getZmanim(String s) {
   String r = new String();
+  //println(s);
   String t = s;
   int start, end;
   String[] headings = 
