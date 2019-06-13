@@ -70,7 +70,7 @@ String getDailyQuote(String s) {
   };
 
   for (int i = 0; i < headings.length; i++) {
-    start = t.indexOf(headings[i]);
+    start = t.indexOf(headings[i]) + headings[i].length();
     if (start != -1) {
       t = t.substring(start);
       end = t.indexOf(" EST");

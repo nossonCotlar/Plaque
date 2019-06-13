@@ -10,12 +10,10 @@ class Theme {
     behind = loadImage("/resources/theme/behind.png");
     fit();
 
-    clock = new Clock(width / 2, 166, 180, 71);
-
-
     initZmanim();
     initSlideShow();
-    initHayom();
+    initDaily();
+    clock = new Clock(width / 2, 166, 180, 71);
     shulTimes = new Scroller("/resources/shulTimes.txt", 1360, 645, 400, 230, 20, .7, true);
     sideScroll = new SideScroller("/resources/sideTest.txt", 0, 995, width, 65, 25, 3);
     background(backColor);
@@ -78,10 +76,10 @@ class Theme {
     }
   }
 
-  void initHayom() {
+  void initDaily() {
     try {
       saveDailyQuote("https://www.chabad.org/tools/rss/dailyquote_rss.xml", "/resources/quote.txt");
-      scroll1 = new Scroller("/resources/quote.txt", 172, 390, 390, 500, 25, 2, false);
+      scroll1 = new Scroller("/resources/quote.txt", 172, 390, 390, 500, 25, 2, true);
     } 
     catch(Exception e) {
       scroll1 = new Scroller("/resources/data/error.txt", 172, 390, 390, 500, 25, 2, false);

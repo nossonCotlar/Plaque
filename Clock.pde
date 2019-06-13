@@ -8,6 +8,8 @@ class Clock{
   color textFill;
   String dayOfWeek;
   String parsha;
+  String date;
+  String hebrew;
   
  Clock(float x, float y, float sizeX, float sizeY){
    this.x = x;
@@ -19,6 +21,8 @@ class Clock{
    
    setWeekDay();
    initParsha();
+   //initDate();
+   initHebrew();
   
    s = second();
    m = minute();
@@ -45,7 +49,7 @@ class Clock{
    textSize(textSize);
    textAlign(CENTER, CENTER);
    text(time, x, y);
-   text(dayOfWeek, x - width / 3 + 40, y);
+   text(dayOfWeek + ' ' + hebrew, x - width / 3 + 40, y);
    text(parsha, x + width / 3 - 40, y);
    textAlign(LEFT);
    
@@ -79,6 +83,30 @@ class Clock{
     catch(Exception e) {
       parsha = "Not Found :(";
     }
+  }
+  
+  void initDate(){
+    String[] months = {
+      "January", 
+      "February", 
+      "March", 
+      "April", 
+      "May", 
+      "June", 
+      "July", 
+      "August", 
+      "September", 
+      "October", 
+      "November", 
+      "December", 
+    };
+    
+    date = months[month() - 1] + " " + day() + ", " + year();
+  }
+  
+  void initHebrew(){
+   String[] temp = loadStrings("/resources/quote.txt");
+   hebrew = temp[0].substring(0, temp[0].indexOf(" - "));
   }
  
 }

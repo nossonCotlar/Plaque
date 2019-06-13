@@ -40,8 +40,9 @@ class SideScroller {
     float push = 0, pushAmount;
     fill(textFill);
     textSize(textSize);
+    textAlign(LEFT);
 
-    for (int j = 0; j < 4; j++) { //run twice so we have some overlap
+    for (int j = 0; j < 4; j++) { //run several times so we have some overlap
 
       for (int i = 0; i < lines.length; i++) {
         text(lines[i], cx + push, cy); 
