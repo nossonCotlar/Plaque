@@ -4,6 +4,7 @@ class Theme {
   SlideShow slide;
   SideScroller sideScroll;
   Clock clock;
+  AnalogClock analog;
 
   Theme(String path) {
     bg = loadImage(path);
@@ -14,6 +15,7 @@ class Theme {
     initSlideShow();
     initDaily();
     clock = new Clock(width / 2, 166, 180, 71);
+    analog = new AnalogClock(width / 2, height - height / 4 - 20, 120);
     shulTimes = new Scroller("/resources/shulTimes.txt", 1360, 645, 400, 230, 20, .7, true);
     sideScroll = new SideScroller("/resources/sideTest.txt", 0, 995, width, 65, 25, 3);
     background(backColor);
@@ -30,6 +32,7 @@ class Theme {
     show();
     sideScroll.update();
     clock.update();
+    analog.update();
     
   }
 
