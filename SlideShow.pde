@@ -67,4 +67,8 @@ class SlideShow {
       }
     }
   }
+  
+  void destroy(){
+   pics = null; 
+  }
 }

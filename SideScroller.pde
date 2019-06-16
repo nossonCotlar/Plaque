@@ -67,4 +67,9 @@ class SideScroller {
     fill(backColor);
     rect(x - offset * 2, y, sizeX, sizeY + offset * 2, 10);
   }
+  
+  void destroy(){
+   lines = null; 
+  }
+  
 }

@@ -134,4 +134,9 @@ class Scroller { //<>// //<>//
       text[i] = lines.get(i);
     }
   }
+  
+  void destroy(){
+   text = null; 
+  }
+  
 }

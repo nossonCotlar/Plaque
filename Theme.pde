@@ -14,8 +14,8 @@ class Theme {
     initZmanim();
     initSlideShow();
     initDaily();
-    clock = new Clock(width / 2, 166, 180, 71);
-    analog = new AnalogClock(width / 2, height - height / 4 - 20, 120);
+    clock = new Clock(width / 2, 166, 180, 71, true);
+    analog = new AnalogClock(width / 2, 360, 120);
     shulTimes = new Scroller("/resources/shulTimes.txt", 1360, 645, 400, 230, 20, .7, true);
     sideScroll = new SideScroller("/resources/sideTest.txt", 0, 995, width, 65, 25, 3);
     background(backColor);
@@ -67,7 +67,7 @@ class Theme {
 
   void initSlideShow() {
     try {
-      slide = new SlideShow("/resources/pics/", 711, 344, 495, 300, 3);
+      slide = new SlideShow("/resources/pics/", 727, 557 , 455, 270, 3);
     } 
     catch(Exception e) {
       try {
@@ -89,5 +89,25 @@ class Theme {
     }
   }
   
+  void destroy(){
+    
+    scroll1.destroy();
+    shulTimes.destroy();
+    times.destroy();
+    slide.destroy();
+    sideScroll.destroy();
+    clock.destroy();
+    analog.destroy();
+    
+   bg = null;
+   behind = null;
+   scroll1 = null;
+   shulTimes = null;
+   times = null;
+  slide = null;
+  sideScroll = null;
+  clock = null;
+  analog = null;
+  }
 
 }
