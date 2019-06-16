@@ -1,18 +1,18 @@
 import http.requests.*;
 
 
-String getTextFromRSS(String url) {
+public String getTextFromRSS(String url) {
   return extractXMLFromString(getRSS(url));
 }
 
-String readURLFromFile(String file) {
+public String readURLFromFile(String file) {
   String[] l = new String[1];
 
   l = loadStrings(file);
   return l[0];
 }
 
-String getRSS(String url) { //gets the XML content of a given URL and returns a string with its contents
+public String getRSS(String url) { //gets the XML content of a given URL and returns a string with its contents
   String[] l = new String[1];
   GetRequest get = new GetRequest(url);
   get.send();
@@ -22,18 +22,18 @@ String getRSS(String url) { //gets the XML content of a given URL and returns a 
   return l[0];
 }
 
-String extractXMLFromString(String s) { //takes a string which is formatted in XML and returns plaintext content
+public String extractXMLFromString(String s) { //takes a string which is formatted in XML and returns plaintext content
   XML x = parseXML(s);
   return x.getContent();
 }
 
-void makeFile(String src, String dest) {
+public void makeFile(String src, String dest) {
   String[] t = new String[1];
   t[0] = src;
   saveStrings(dest, t);
 }
 
-void saveDailyQuote(String url, String path) {
+public void saveDailyQuote(String url, String path) {
   String text = getTextFromRSS(url);
 
   String t = getDailyQuote(text);
@@ -41,7 +41,7 @@ void saveDailyQuote(String url, String path) {
   makeFile(t, path);
 }
 
-void saveParsha(String url, String path) {
+public void saveParsha(String url, String path) {
   String text = getTextFromRSS(url);
 
   String t = getParsha(text);
@@ -49,7 +49,7 @@ void saveParsha(String url, String path) {
   makeFile(t, path);
 }
 
-String getParsha(String s){
+public String getParsha(String s){
   String parsha = new String();
   String t = s;
   int start = t.indexOf("Parsha - ");
@@ -59,7 +59,7 @@ String getParsha(String s){
   return parsha;
 }
 
-String getDailyQuote(String s) {
+public String getDailyQuote(String s) {
   String r = new String();
   String t = s;
   int start, end;
@@ -82,7 +82,7 @@ String getDailyQuote(String s) {
   return r;
 }
 
-void saveZmanim(String url, String path) {
+public void saveZmanim(String url, String path) {
   String text = getTextFromRSS(url);
 
   String t = getZmanim(text);
@@ -90,7 +90,7 @@ void saveZmanim(String url, String path) {
   makeFile(t, path);
 }
 
-String getZmanim(String s) {
+public String getZmanim(String s) {
   String r = new String();
   //println(s);
   String t = s;
