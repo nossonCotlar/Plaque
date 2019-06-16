@@ -5,7 +5,6 @@ class Clock{
   float x, y, sizeX, sizeY;
   String time;
   int textSize = 37;
-  color textFill;
   String dayOfWeek;
   String parsha;
   String date;
@@ -16,8 +15,6 @@ class Clock{
    this.y = y;
    this.sizeX = sizeX;
    this.sizeY = sizeY;
-   textFill = color(193, 139, 0);
-   
    
    setWeekDay();
    initParsha();
@@ -45,7 +42,7 @@ class Clock{
  
  void show(){
    //showBox();
-   fill(textFill);
+   fill(textColor1);
    textSize(textSize);
    textAlign(CENTER, CENTER);
    text(time, x, y);

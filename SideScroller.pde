@@ -4,7 +4,6 @@ class SideScroller {
   float cx, cy, ox;
   float scrollSpeed;
   String[] lines;
-  color textFill;
   float textSize, offset;
   float bw;
   int cutoff = 0;
@@ -21,7 +20,6 @@ class SideScroller {
     offset = 5;
     this.scrollSpeed = speed;
     bw = 50;
-    textFill = color(193, 139, 0);
     lines = loadStrings(s);
   }
 
@@ -38,7 +36,7 @@ class SideScroller {
 
     //showBox();
     float push = 0, pushAmount;
-    fill(textFill);
+    fill(textColor1);
     textSize(textSize);
     textAlign(LEFT);
 

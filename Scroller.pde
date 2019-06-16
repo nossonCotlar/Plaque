@@ -5,7 +5,6 @@ class Scroller { //<>// //<>//
   float scrollSpeed;
 
   String[] text;
-  color textFill;
   float textSize, offset;
   boolean small;
   boolean stop;
@@ -24,7 +23,6 @@ class Scroller { //<>// //<>//
     this.textSize = textSize;
     offset = 5;
     this.scrollSpeed = speed;
-    textFill = color(193, 139, 0);
     generateFromFile(s);
     stop = false;
     small = (text.length * (textSize + offset) < sizeY); //set as small if number of lines can fit in frame
@@ -42,7 +40,7 @@ class Scroller { //<>// //<>//
 
   void showSmall() {
     textSize(textSize);
-    fill(textFill);
+    fill(textColor1);
     for (int i = 0; i < text.length; i++) {
       text(text[i], cx, cy + i * (textSize + offset));
     }
@@ -52,7 +50,7 @@ class Scroller { //<>// //<>//
 
     textSize(textSize);
     
-    fill(textFill);
+    fill(textColor1);
     if (center) textAlign(CENTER);
     else textAlign(LEFT);
     if (small) {

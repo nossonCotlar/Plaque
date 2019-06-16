@@ -1,7 +1,6 @@
 class AnalogClock{
  
   float rad, x, y;
-  color fill;
   
   int hr, mn, sc;
 float scAng, mnAng, hrAng;
@@ -14,7 +13,7 @@ float scAng, mnAng, hrAng;
     this.rad = rad;
     setAngles();
     
-    fill = color(193, 139, 0);
+    
   }
   
   void update(){
@@ -27,7 +26,7 @@ float scAng, mnAng, hrAng;
     
     strokeWeight(5);
     noFill();
-    stroke(fill);
+    stroke(textColor1);
   circle(x, y, rad * 2);
   
   

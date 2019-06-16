@@ -2,6 +2,7 @@
 // Copyright 2019
 
 final color backColor = color(200);
+final color textColor1 = color(193, 139, 0);
 Theme theme;
 boolean stop = false;
 PFont font;
