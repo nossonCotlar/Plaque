@@ -1,5 +1,5 @@
  //<>//
-class SlideShow {
+class SlideShow extends Element{
 
   PImage[] pics;
   int amount, current;
@@ -7,20 +7,16 @@ class SlideShow {
   float x, y, sizeX, sizeY, speed, offset;
   boolean stop;
 
-  SlideShow(String path, int x, int y, int sizeX, int sizeY, int speed) throws Exception {
+  SlideShow(String path, int x, int y, int sizeX, int sizeY, int speed){
+    super(x, y, sizeX, sizeY);
     current = 0;
     counter = 0;
     check = 0;
     offset = 10;
     stop = false;
-    this.x = x;
-    this.y = y;
-    this.sizeX = sizeX;
-    this.sizeY = sizeY;
     this.speed = speed;
 
     loadImages(path);
-    if (amount == 0) throw new Exception("no images in folder");
     resizeImages();
   }
 
@@ -52,6 +48,12 @@ class SlideShow {
   void loadImages(String path) {
     File[] files = listFiles(path); //get file array from directory
     amount = files.length;
+    if(amount == 0){
+      amount = 1;
+     pics = new PImage[1];
+     pics[0] = loadImage("/resources/data/nothing/nothing.jpg");
+     return;
+    }
     pics = new PImage[amount]; //create PImage array sized accordingly
 
     for (int i = 0; i < amount; i++) {
@@ -69,6 +71,9 @@ class SlideShow {
   }
   
   void destroy(){
+    for(int i = 0; i < pics.length; i++){
+     g.removeCache(pics[i]); 
+    }
    pics = null; 
   }
 }

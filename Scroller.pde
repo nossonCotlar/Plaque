@@ -1,6 +1,6 @@
-class Scroller { //<>// //<>//
+class Scroller extends Element { //<>// //<>//
   PFont font;
-  float x, y, sizeX, sizeY;
+  //float x, y, sizeX, sizeY;
   float cx, cy, oy;
   float scrollSpeed;
 
@@ -13,10 +13,7 @@ class Scroller { //<>// //<>//
 
   Scroller(String s, int x, int y, int sizeX, int sizeY, int textSize, float speed, boolean center) {
 
-    this.x = x;
-    this.y = y;
-    this.sizeX = sizeX;
-    this.sizeY = sizeY;
+    super(x, y, sizeX, sizeY);
     cx = x;
     cy = y + sizeY;
     oy = cy;

@@ -1,4 +1,4 @@
-class SideScroller {
+class SideScroller extends Element{
 
   float x, y, sizeX, sizeY;
   float cx, cy, ox;
@@ -9,10 +9,7 @@ class SideScroller {
   int cutoff = 0;
 
   SideScroller(String s, int x, int y, int sizeX, int sizeY, int textSize, int speed) {
-    this.x = x;
-    this.y = y;
-    this.sizeX = sizeX;
-    this.sizeY = sizeY;
+    super(x, y, sizeX, sizeY);
     cx = x;
     ox = cx;
     cy = y + sizeY - 10;

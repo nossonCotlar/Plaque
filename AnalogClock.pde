@@ -1,6 +1,6 @@
-class AnalogClock {
+class AnalogClock extends Element{
 
-  private float rad, x, y;
+  private float rad;
   private int hr, mn, sc;
   private float scAng, mnAng, hrAng;
   private PImage outline;
@@ -9,8 +9,7 @@ class AnalogClock {
 
 
   AnalogClock(float x, float y, float rad) {
-    this.x = x;
-    this.y = y;
+    super(x, y, 0, 0);
     this.rad = rad;
     setAngles();
     outline = loadImage("/resources/clock/clockOutline1.png");

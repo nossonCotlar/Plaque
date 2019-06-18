@@ -2,7 +2,7 @@ import http.requests.*;
 
 
 public String getTextFromRSS(String url) {
-  return extractXMLFromString(getRSS(url));
+    return extractXMLFromString(getRSS(url));
 }
 
 public String readURLFromFile(String file) {
@@ -49,13 +49,13 @@ public void saveParsha(String url, String path) {
   makeFile(t, path);
 }
 
-public String getParsha(String s){
+public String getParsha(String s) {
   String parsha = new String();
   String t = s;
   int start = t.indexOf("Parsha - ");
   int end = t.indexOf("http://");
   parsha = t.substring(start, end);
-  
+
   return parsha;
 }
 
@@ -83,9 +83,11 @@ public String getDailyQuote(String s) {
 }
 
 public void saveZmanim(String url, String path) {
+  String t;
   String text = getTextFromRSS(url);
 
-  String t = getZmanim(text);
+  t = getZmanim(text);
+
 
   makeFile(t, path);
 }

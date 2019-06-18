@@ -1,8 +1,7 @@
 import java.util.Date;
 
-class Clock {
+class Clock extends Element{
   private int s, m, h;
-  private float x, y, sizeX, sizeY;
   private String time;
   private int textSize = 37;
   private String dayOfWeek;
@@ -12,10 +11,7 @@ class Clock {
   private boolean full;
 
   Clock(float x, float y, float sizeX, float sizeY, boolean full) {
-    this.x = x;
-    this.y = y;
-    this.sizeX = sizeX;
-    this.sizeY = sizeY;
+    super(x, y, sizeX, sizeY);
     this.full = full;
 
     if (full) {
