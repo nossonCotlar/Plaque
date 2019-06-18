@@ -1,6 +1,6 @@
 class Theme {
   PImage bg, behind;
-  Scroller scroll1, shulTimes, times;
+  Scroller quote, shulTimes, times, donors;
   SlideShow slide;
   SideScroller sideScroll;
   Clock clock;
@@ -15,9 +15,10 @@ class Theme {
     initSlideShow();
     initDaily();
     clock = new Clock(width / 2, 166, 180, 71, true);
-    analog = new AnalogClock(width / 2, 360, 120);
-    shulTimes = new Scroller("/resources/shulTimes.txt", 1360, 645, 400, 230, 20, .7, true);
-    sideScroll = new SideScroller("/resources/sideTest.txt", 0, 995, width, 65, 25, 3);
+    analog = new AnalogClock(width / 2, 250, 120);
+    shulTimes = new Scroller("/resources/texts/shulTimes.txt", 1360, 645, 400, 230, 20, .7, true);
+    donors = new Scroller("/resources/texts/donors.txt", 738, 380, 430, 270, 30, .7, true);
+    sideScroll = new SideScroller("/resources/texts/sideTest.txt", 0, 995, width, 65, 25, 3);
     background(backColor);
   }
 
@@ -27,13 +28,13 @@ class Theme {
     showBehind();
     shulTimes.update();
     times.update();
-    scroll1.update();
+    quote.update();
     slide.update();
+    donors.update();
     show();
     sideScroll.update();
     clock.update();
     analog.update();
-    
   }
 
   void show() {
@@ -57,8 +58,8 @@ class Theme {
 
   void initZmanim() {
     try {
-      saveZmanim(readURLFromFile("/resources/data/url.txt"), "/resources/times.txt");
-      times = new Scroller("/resources/times.txt", 1360, 390, 400, 230, 20, .7, true);
+      saveZmanim(readURLFromFile("/resources/data/url.txt"), "/resources/texts/times.txt");
+      times = new Scroller("/resources/texts/times.txt", 1360, 390, 400, 230, 20, .7, true);
     } 
     catch(Exception e) {
       times = new Scroller("/resources/data/error.txt", 1360, 390, 400, 230, 20, .7, true);
@@ -67,7 +68,7 @@ class Theme {
 
   void initSlideShow() {
     try {
-      slide = new SlideShow("/resources/pics/", 727, 557 , 455, 270, 3);
+      slide = new SlideShow("/resources/pics/", 727, 680, 455, 250, 3);
     } 
     catch(Exception e) {
       try {
@@ -81,33 +82,32 @@ class Theme {
 
   void initDaily() {
     try {
-      saveDailyQuote("https://www.chabad.org/tools/rss/dailyquote_rss.xml", "/resources/quote.txt");
-      scroll1 = new Scroller("/resources/quote.txt", 172, 390, 390, 500, 25, 2, true);
+      saveDailyQuote("https://www.chabad.org/tools/rss/dailyquote_rss.xml", "/resources/texts/quote.txt");
+      quote = new Scroller("/resources/texts/quote.txt", 172, 390, 390, 500, 25, 2, true);
     } 
     catch(Exception e) {
-      scroll1 = new Scroller("/resources/data/error.txt", 172, 390, 390, 500, 25, 2, false);
+      quote = new Scroller("/resources/data/error.txt", 172, 390, 390, 500, 25, 2, false);
     }
   }
-  
-  void destroy(){
-    
-    scroll1.destroy();
+
+  void destroy() {
+
+    quote.destroy();
     shulTimes.destroy();
     times.destroy();
     slide.destroy();
     sideScroll.destroy();
     clock.destroy();
     analog.destroy();
-    
-   bg = null;
-   behind = null;
-   scroll1 = null;
-   shulTimes = null;
-   times = null;
-  slide = null;
-  sideScroll = null;
-  clock = null;
-  analog = null;
-  }
 
+    bg = null;
+    behind = null;
+    quote = null;
+    shulTimes = null;
+    times = null;
+    slide = null;
+    sideScroll = null;
+    clock = null;
+    analog = null;
+  }
 }

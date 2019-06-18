@@ -21,7 +21,7 @@ class Clock {
     if (full) {
       setWeekDay();
       initParsha();
-      //initDate();
+      initDate();
       initHebrew();
     }
 
@@ -35,7 +35,8 @@ class Clock {
     m = minute();
     h = hour();
 
-    time = h + ":";
+    if (h % 12 == 0) time = "12:";
+    else time = h % 12 + ":";
     if (m < 10) time += '0';
     time += m + ":";
     if (s < 10) time += '0';
@@ -47,9 +48,10 @@ class Clock {
   private void show() {
     //showBox();
     fill(textColor2);
-    textSize(textSize * 1.5);
+    textSize(textSize);
     textAlign(CENTER, CENTER);
-    text(time, x, y);
+    text(time, x - 185, y);
+    text(date, x + 185, y);
     if (!full) {
       textAlign(LEFT);
       return;
@@ -81,8 +83,8 @@ class Clock {
 
   private void initParsha() {
     try {
-      saveParsha("https://www.chabad.org/tools/rss/parsha_rss.xml", "/resources/parsha.txt");
-      String[] temp = loadStrings("/resources/parsha.txt");
+      saveParsha("https://www.chabad.org/tools/rss/parsha_rss.xml", "/resources/texts/parsha.txt");
+      String[] temp = loadStrings("/resources/texts/parsha.txt");
       parsha = temp[0];
     } 
     catch(Exception e) {
@@ -91,6 +93,7 @@ class Clock {
   }
 
   private void initDate() {
+    /*
     String[] months = {
       "January", 
       "February", 
@@ -104,13 +107,13 @@ class Clock {
       "October", 
       "November", 
       "December", 
-    };
+    }; */
 
-    date = months[month() - 1] + " " + day() + ", " + year();
+    date = month() + "/" + day() + "/" + year() % 1000;
   }
 
   private void initHebrew() {
-    String[] temp = loadStrings("/resources/quote.txt");
+    String[] temp = loadStrings("/resources/texts/quote.txt");
     hebrew = temp[0].substring(0, temp[0].indexOf(" - "));
   }
 

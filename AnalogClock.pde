@@ -1,7 +1,6 @@
 class AnalogClock {
 
   private float rad, x, y;
-
   private int hr, mn, sc;
   private float scAng, mnAng, hrAng;
   private PImage outline;
@@ -14,7 +13,7 @@ class AnalogClock {
     this.y = y;
     this.rad = rad;
     setAngles();
-    outline = loadImage("/resources/clock/clockOutline.png");
+    outline = loadImage("/resources/clock/clockOutline1.png");
     outline.resize(int(rad * 2), 0);
     hi = outline.height / 2;
     wid = outline.width / 2;
@@ -27,15 +26,9 @@ class AnalogClock {
 
   void show() {
     pushStyle();
-
+    
+    //draw the circe graphic
     image(outline, x - wid, y - hi);
-
-    /* 
-     
-     noFill();
-     stroke(textColor1);
-     circle(x, y, rad * 2);
-     */
 
     //second hand
     strokeWeight(3);
@@ -43,7 +36,7 @@ class AnalogClock {
     pushMatrix();
     translate(x, y);
     rotate(scAng);
-    line(0, 0, 0, -rad + 10);
+    line(0, 0, 0, -rad + 13);
     popMatrix();
 
     //minute hand
@@ -63,6 +56,8 @@ class AnalogClock {
     rotate(hrAng);
     line(0, 0, 0, -rad + rad / 2);
     popMatrix();
+    
+    
 
     popStyle();
   }
@@ -76,6 +71,7 @@ class AnalogClock {
     mnAng = map(mn, 0, 60, 0, TWO_PI) + map(sc, 0, 60, 0, TWO_PI / 60);
     hrAng = map(hr % 12, 0, 12, 0, TWO_PI) + map(mn, 0, 60, 0, TWO_PI / 12);
   }
+  
   
   void destroy(){
     outline = null;
