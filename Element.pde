@@ -10,5 +10,6 @@ public class Element{
   }
 
   void update(){return;}
+  void destroy() {return;}
   
 }
