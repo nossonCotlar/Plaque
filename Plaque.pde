@@ -55,7 +55,7 @@ void keyPressed() {
 
 void init() {
   theme = new Theme("/resources/theme/theme.png");
-  background(backColor);
+  stop = false;
 }
 
 void updateCheck() {

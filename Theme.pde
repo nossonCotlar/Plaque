@@ -17,21 +17,15 @@ class Theme {
       new Scroller("/resources/texts/donors.txt", 738, 433, 430, 250, 30, .7, true), 
       new SideScroller("/resources/texts/sideTest.txt", 0, 995, width, 65, 25, 3), 
       new Scroller("/resources/texts/times.txt", 1360, 390, 400, 230, 20, .7, true), 
-      new Scroller("/resources/texts/quote.txt", 172, 390, 390, 500, 25, 2, true)
-    };
+      new Scroller("/resources/texts/quote.txt", 172, 390, 390, 500, 25, 2, true) };
 
-    stop = false;
   }
 
   void update() {
     //background(200);
-
     showBehind();
     show();
-    
-    for(int i = 0; i < elements.length; i++){
-     elements[i].update(); 
-    }
+    for(int i = 0; i < elements.length; i++) elements[i].update(); 
   }
 
   void show() {
