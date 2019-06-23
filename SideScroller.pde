@@ -1,12 +1,12 @@
-class SideScroller extends Element{
+public class SideScroller extends Element{
 
-  float x, y, sizeX, sizeY;
-  float cx, cy, ox;
-  float scrollSpeed;
-  String[] lines;
-  float textSize, offset;
-  float bw;
-  int cutoff = 0;
+  private float x, y, sizeX, sizeY;
+  private float cx, cy, ox;
+  private float scrollSpeed;
+  private String[] lines;
+  private float textSize, offset;
+  private float bw;
+  private int cutoff = 0;
 
   SideScroller(String s, int x, int y, int sizeX, int sizeY, int textSize, int speed) {
     super(x, y, sizeX, sizeY);
@@ -20,16 +20,16 @@ class SideScroller extends Element{
     lines = loadStrings(s);
   }
 
-  void update() {
+  public void update() {
     scroll();
     show();
   }
 
-  void scroll() {
+  private void scroll() {
     cx -= scrollSpeed;
   }
 
-  void show() {
+  private void show() {
 
     //showBox();
     float push = 0, pushAmount;
@@ -60,12 +60,12 @@ class SideScroller extends Element{
     }
   }
 
-  void showBox() {
+  private void showBox() {
     fill(backColor);
     rect(x - offset * 2, y, sizeX, sizeY + offset * 2, 10);
   }
   
-  void destroy(){
+  public void destroy(){
    lines = null; 
   }
   

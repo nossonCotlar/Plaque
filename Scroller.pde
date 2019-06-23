@@ -1,14 +1,12 @@
-class Scroller extends Element { //<>// //<>//
-  PFont font;
+public class Scroller extends Element { //<>// //<>//
+  //private PFont font;
   //float x, y, sizeX, sizeY;
-  float cx, cy, oy;
-  float scrollSpeed;
+  private float cx, cy, oy;
+  private float scrollSpeed;
 
-  String[] text;
-  float textSize, offset;
-  boolean small;
-  boolean stop;
-  boolean center;
+  private String[] text;
+  private float textSize, offset;
+  private boolean small, stop, center;
 
 
   Scroller(String s, int x, int y, int sizeX, int sizeY, int textSize, float speed, boolean center) {
@@ -28,14 +26,14 @@ class Scroller extends Element { //<>// //<>//
     if(center) cx = x + sizeX / 2;
   }
 
-  void scrollDown() {
+  private void scrollDown() {
     cy -= scrollSpeed;
     if (cy + (text.length * (textSize + offset)) < y ) { //once the last line is above the starting y coordinate
       cy = y + sizeY; //reset it
     }
   }
 
-  void showSmall() {
+  private void showSmall() {
     textSize(textSize);
     fill(textColor1);
     for (int i = 0; i < text.length; i++) {
@@ -43,7 +41,7 @@ class Scroller extends Element { //<>// //<>//
     }
   }
 
-  void show() {
+  private void show() {
 
     textSize(textSize);
     
@@ -76,18 +74,18 @@ class Scroller extends Element { //<>// //<>//
     
   }
 
-  void showBox() {
+  private void showBox() {
     fill(backColor);
     rect(x - textSize * 2, y - textSize * 2, sizeX + textSize * 2, sizeY + textSize * 2, 10);
   }
 
-  void showBlockers() {
+  private void showBlockers() {
     fill(backColor);
     rect(0, 0, width, y);
     rect(0, y + sizeY + textSize * 2, width, height - y + sizeY + textSize * 2);
   }
 
-  void update() {
+  public void update() {
     //if (!stop) showBox();
     if (!small) scrollDown();
 
@@ -95,7 +93,7 @@ class Scroller extends Element { //<>// //<>//
     //showBlockers();
   }
 
-  void generateFromFile(String s) { //this takes a file which isn't necessarily spaced to fit the text box size, and attempts to size it properly
+  private void generateFromFile(String s) { //this takes a file which isn't necessarily spaced to fit the text box size, and attempts to size it properly
     String[] input = loadStrings(s);
     String temp = input[0];
     StringList lines = new StringList();

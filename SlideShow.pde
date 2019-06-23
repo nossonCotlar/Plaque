@@ -1,13 +1,13 @@
  //<>//
-class SlideShow extends Element{
+public class SlideShow extends Element {
 
-  PImage[] pics;
-  int amount, current;
-  double counter, check;
-  float x, y, sizeX, sizeY, speed, offset;
-  boolean stop;
+  private PImage[] pics;
+  private int amount, current;
+  private double counter, check;
+  private float speed, offset;
+  private boolean stop;
 
-  SlideShow(String path, int x, int y, int sizeX, int sizeY, int speed){
+  SlideShow(String path, int x, int y, int sizeX, int sizeY, int speed) {
     super(x, y, sizeX, sizeY);
     current = 0;
     counter = 0;
@@ -20,22 +20,22 @@ class SlideShow extends Element{
     resizeImages();
   }
 
-  void update() {
+  public void update() {
     change();
     show();
   }
 
-  void show() {
+  private void show() {
     //showBox();
     image(pics[current], x + (sizeX - pics[current].width) / 2, y);
   }
 
-  void showBox() {
+  private  void showBox() {
     fill(backColor);
     rect(x - offset, y - offset, sizeX + offset * 2, sizeY + offset * 2, 10);
   }
 
-  void change() {
+  private void change() {
     counter = frameCount;
     if (counter - check >= speed * frameRate) {
       check = counter;
@@ -45,14 +45,14 @@ class SlideShow extends Element{
     }
   }
 
-  void loadImages(String path) {
+  private void loadImages(String path) {
     File[] files = listFiles(path); //get file array from directory
     amount = files.length;
-    if(amount == 0){
+    if (amount == 0) {
       amount = 1;
-     pics = new PImage[1];
-     pics[0] = loadImage("/resources/data/nothing/nothing.jpg");
-     return;
+      pics = new PImage[1];
+      pics[0] = loadImage("/resources/data/nothing/nothing.jpg");
+      return;
     }
     pics = new PImage[amount]; //create PImage array sized accordingly
 
@@ -61,7 +61,7 @@ class SlideShow extends Element{
     }
   }
 
-  void resizeImages() {
+  private void resizeImages() {
     for (int i = 0; i < amount; i++) {
       pics[i].resize(int(sizeX), 0);
       if (pics[i].height > sizeY) {
@@ -69,11 +69,11 @@ class SlideShow extends Element{
       }
     }
   }
-  
-  void destroy(){
-    for(int i = 0; i < pics.length; i++){
-     g.removeCache(pics[i]); 
+
+  public void destroy() {
+    for (int i = 0; i < pics.length; i++) {
+      g.removeCache(pics[i]);
     }
-   pics = null; 
+    pics = null;
   }
 }
