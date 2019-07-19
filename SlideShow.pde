@@ -2,6 +2,7 @@
 public class SlideShow extends Element {
 
   private PImage[] pics;
+  private String[] paths;
   private int amount, current;
   private double counter, check;
   private float speed, offset;
@@ -17,6 +18,7 @@ public class SlideShow extends Element {
     this.speed = speed;
 
     loadImages(path);
+    
     resizeImages();
   }
 
