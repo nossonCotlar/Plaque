@@ -1,7 +1,6 @@
 // Nosson Cotlar
 // Copyright 2019
 
-Theme theme;
 boolean stop = false;
 
 void setup() {
@@ -16,7 +15,6 @@ void setup() {
 
 void draw() {
   if (theme != null) {
-    //background(backColor);
     theme.update();
   } else {
     if (!stop) {

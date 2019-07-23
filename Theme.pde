@@ -1,11 +1,14 @@
 public class Theme {
   private Element[] elements;
   private PImage bg, behind;
+  private Zmanim zmanim;
 
   Theme(String path) {
     bg = loadImage(path);
     behind = loadImage("/resources/theme/behind.png");
     fit();
+    
+    zmanim = new Zmanim("/resources/RESTapi/creds.json");
     
     saveZmanim(readURLFromFile("/resources/data/url.txt"), "/resources/texts/times.txt");
     saveDailyQuote("https://www.chabad.org/tools/rss/dailyquote_rss.xml", "/resources/texts/quote.txt");

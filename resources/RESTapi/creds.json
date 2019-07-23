@@ -1,0 +1,8 @@
+{
+"APIURL": "https://api.myzmanim.com/engine1.json.aspx",
+"APIUSER" : "0010921043",
+"APIKEY" : "ff71bd8bec18ecc3a6716ca8e6462f52646b8a774d1b292d63d37ee9618cede940d4ae97277af79d",
+"LOCATIONID" :"US77071",
+"METHOD" : "getDay",
+"JSONPATH" : "/resources/RESTapi/zmanim.json"
+}

@@ -1,8 +1,9 @@
 void keyPressed() {
   if (key == 'p') saveFrame("save.png"); 
   if (key == 'r') {
-    frameCount = -1;
+    
     freeStuffUp();
+    thread("init");
   }
 }
 
