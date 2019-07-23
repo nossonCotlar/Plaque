@@ -7,7 +7,7 @@ void keyPressed() {
 
 
 void init() {
-  theme = new Theme("/resources/theme/theme.png");
+  theme = new Theme();
   stop = false;
 }
 
