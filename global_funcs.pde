@@ -1,11 +1,10 @@
 void keyPressed() {
-  if (key == 'p') saveFrame("save.png"); 
+  if (key == 'p') saveFrame("/ScreenShots/save.png"); 
   if (key == 'r') {
-    
-    freeStuffUp();
-    thread("init");
+    reset();
   }
 }
+
 
 void init() {
   theme = new Theme("/resources/theme/theme.png");
@@ -14,8 +13,7 @@ void init() {
 
 void updateCheck() {
   if (hour() == 0 && minute() == 0 && second() == 0) {
-    freeStuffUp();
-    thread("init");
+    reset();
   }
 }
 
@@ -30,6 +28,12 @@ void initFont() {
   PFont font;
   font = createFont("Uniform Condensed Medium.ttf", 45);
   if (font != null) textFont(font);
+}
+
+void reset(){
+ freeStuffUp();
+ delay(2000);
+ thread("init");
 }
 
 void updateInfoDisplay() {

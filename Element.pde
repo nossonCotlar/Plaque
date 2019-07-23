@@ -1,6 +1,6 @@
 public class Element{
  
-  float x, y, sizeX, sizeY;
+  protected float x, y, sizeX, sizeY;
   
   Element(float x, float y, float sizeX, float sizeY){
    this.x = x;

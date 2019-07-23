@@ -1,9 +1,8 @@
-// Nosson Cotlar
+// Nosson Cotlar - Rood Systems
 // Copyright 2019
 
-boolean stop = false;
-
 void setup() {
+  config = loadJSONObject("config.json");
   fullScreen();
   frameRate(60); 
   rectMode(CORNER);
@@ -16,13 +15,12 @@ void setup() {
 void draw() {
   if (theme != null) {
     theme.update();
+    updateCheck();
   } else {
     if (!stop) {
       updateInfoDisplay();
       stop = true;
     }
   }
-
-  updateCheck();
   //println(mouseX, ' ', mouseY);
 }

@@ -1,6 +1,4 @@
-public class Scroller extends Element { //<>// //<>//
-  //private PFont font;
-  //float x, y, sizeX, sizeY;
+public class Scroller extends Element { //<>//
   private float cx, cy, oy;
   private float scrollSpeed;
 
