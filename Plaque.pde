@@ -24,5 +24,5 @@ void draw() {
   }
 
   updateCheck();
-  println(mouseX, ' ', mouseY);
+  //println(mouseX, ' ', mouseY);
 }
