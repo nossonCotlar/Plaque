@@ -5,4 +5,5 @@ final color textColor2 = color(23, 42, 80); //very dark blue
 Theme theme;
 
 boolean stop = false;
+boolean license;
 JSONObject config;

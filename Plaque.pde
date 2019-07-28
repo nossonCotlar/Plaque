@@ -3,6 +3,7 @@
 
 void setup() {
   config = loadJSONObject("config.json");
+  licenseCheck();
   fullScreen();
   frameRate(60); 
   rectMode(CORNER);
@@ -15,6 +16,7 @@ void setup() {
 void draw() {
   if (theme != null) {
     theme.update();
+    displayLicenseWatermark();
     updateCheck();
   } else {
     if (!stop) {

@@ -14,7 +14,7 @@ public class Theme {
     saveDailyQuote("https://www.chabad.org/tools/rss/dailyquote_rss.xml", "/resources/texts/quote.txt");
 
     elements = new Element[] {
-      // new SlideShow("/resources/pics/", 727, 672, 453, 260, 3), 
+      new SlideShow("/resources/pics/", 727, 672, 453, 260, 3), 
       new Clock(width / 2, 166, 180, 71, true), 
       new AnalogClock(width / 2, 250, 120), 
       new Scroller("/resources/texts/shulTimes.txt", 1360, 645, 400, 230, 20, .7, true), 
