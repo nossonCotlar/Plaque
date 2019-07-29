@@ -11,8 +11,16 @@ public class Theme {
     zmanim = new Zmanim("/resources/RESTapi/creds.json");
 
     saveZmanim(readURLFromFile("/resources/data/url.txt"), "/resources/texts/times.txt");
-    saveDailyQuote("https://www.chabad.org/tools/rss/dailyquote_rss.xml", "/resources/texts/quote.txt");
+    //saveDailyQuote("https://www.chabad.org/tools/rss/dailyquote_rss.xml", "/resources/texts/quote.txt");
 
+    initElements();
+    
+    //printArray(loadStrings(getPathToParshaContent()));
+
+    System.gc();
+  }
+
+  public void initElements() {
     elements = new Element[] {
       new SlideShow("/resources/pics/", 727, 672, 453, 260, 3), 
       new Clock(width / 2, 166, 180, 71, true), 
@@ -20,10 +28,8 @@ public class Theme {
       new Scroller("/resources/texts/shulTimes.txt", 1360, 645, 400, 230, 20, .7, true), 
       new Scroller("/resources/texts/donors.txt", 738, 433, 430, 250, 30, .7, true), 
       new Scroller("/resources/texts/times.txt", 1360, 390, 400, 230, 20, .7, true), 
-      new Scroller("/resources/texts/quote.txt", 172, 390, 390, 500, 25, 2, true), 
-      new SideScroller("/resources/texts/sideTest.txt", 0, 995, width, 65, 25, 3) };
-
-    System.gc();
+      new Scroller(getPathToParshaContent(), 172, 405, 390, 460, 17, .5, false), 
+      new SideScroller("/resources/texts/sideTest.txt", 0, 995, width, 65, 25, 2) };
   }
 
   public void update() {
@@ -38,9 +44,7 @@ public class Theme {
   }
 
   private void showBehind() {
-    image(behind, 119, 232);
-    image(behind, 711, 232);
-    image(behind, 1310, 232);
+    image(behind, 0, 0);
   }
 
   private void fit() {

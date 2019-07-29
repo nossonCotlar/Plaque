@@ -72,23 +72,11 @@ public class Scroller extends Element { //<>//
     
   }
 
-  private void showBox() {
-    fill(backColor);
-    rect(x - textSize * 2, y - textSize * 2, sizeX + textSize * 2, sizeY + textSize * 2, 10);
-  }
-
-  private void showBlockers() {
-    fill(backColor);
-    rect(0, 0, width, y);
-    rect(0, y + sizeY + textSize * 2, width, height - y + sizeY + textSize * 2);
-  }
-
   public void update() {
     //if (!stop) showBox();
     if (!small) scrollDown();
 
     show();
-    //showBlockers();
   }
 
   private void generateFromFile(String s) { //this takes a file which isn't necessarily spaced to fit the text box size, and attempts to size it properly

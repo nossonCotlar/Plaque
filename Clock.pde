@@ -24,6 +24,8 @@ class Clock extends Element{
     s = second();
     m = minute();
     h = hour();
+    
+    println(getPathToParshaContent());
   }
 
   public void update() {
@@ -45,23 +47,21 @@ class Clock extends Element{
     //showBox();
     fill(textColor2);
     textSize(textSize);
-    textAlign(CENTER, CENTER);
-    text(time, x - 185, y);
-    text(date, x + 185, y);
+    textAlign(LEFT, CENTER);
+    text(time, x - 230, y);
+    
+    textAlign(RIGHT, CENTER);
+    text(date, x + 230, y);
     if (!full) {
       textAlign(LEFT);
       return;
     }
+    textAlign(CENTER, CENTER);
     fill(textColor1);
     textSize(textSize);
     text(dayOfWeek + ' ' + hebrew, x - width / 3 + 40, y);
     text(parsha, x + width / 3 - 40, y);
     textAlign(LEFT);
-  }
-
-  private void showBox() {
-    fill(backColor);
-    rect(x, y, sizeX, sizeY);
   }
 
   private void setWeekDay() {
@@ -74,7 +74,7 @@ class Clock extends Element{
       "Friday", 
       "Shabbos"};
 
-    dayOfWeek = weekDays[new Date().getDay()];
+    dayOfWeek = weekDays[today.getDay()];
   }
 
   private void initParsha() {

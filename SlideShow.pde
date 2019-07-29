@@ -18,8 +18,8 @@ public class SlideShow extends Element {
     this.speed = speed;
 
     loadImages(path);
-    
-    resizeImages();
+
+    //resizeImages();
   }
 
   public void update() {
@@ -29,12 +29,8 @@ public class SlideShow extends Element {
 
   private void show() {
     //showBox();
+    if (pics[current] == null) return;
     image(pics[current], x + (sizeX - pics[current].width) / 2, y);
-  }
-
-  private  void showBox() {
-    fill(backColor);
-    rect(x - offset, y - offset, sizeX + offset * 2, sizeY + offset * 2, 10);
   }
 
   private void change() {
@@ -54,18 +50,15 @@ public class SlideShow extends Element {
       amount = 1;
       pics = new PImage[1];
       pics[0] = loadImage("/resources/data/nothing/nothing.jpg");
+      pics[0].resize(int(sizeX), 0);
       return;
     }
     pics = new PImage[amount]; //create PImage array sized accordingly
 
     for (int i = 0; i < amount; i++) {
-      pics[i] = loadImage(files[i].getPath());
-    }
-  }
-
-  private void resizeImages() {
-    for (int i = 0; i < amount; i++) {
-      pics[i].resize(int(sizeX), 0);
+      pics[i] = loadImage(files[i].getPath()); //load images
+      
+      pics[i].resize(int(sizeX), 0); //then resize
       if (pics[i].height > sizeY) {
         pics[i].resize(0, int(sizeY));
       }
@@ -75,6 +68,7 @@ public class SlideShow extends Element {
   public void destroy() {
     for (int i = 0; i < pics.length; i++) {
       g.removeCache(pics[i]);
+      pics[i] = null;
     }
     pics = null;
   }

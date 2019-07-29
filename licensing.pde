@@ -1,30 +1,36 @@
-public void licenseCheck(){
- String url, user, licenseKey;
- JSONObject credentials = loadJSONObject("auth.json");
- user = credentials.getString("user");
- licenseKey = credentials.getString("key");
- url = credentials.getString("url");
- 
- String full = url + "/?user=" + user + "&key=" + licenseKey;
- 
- GetRequest licenseGet = new GetRequest(full);
- licenseGet.send();
- if(licenseGet.getContent() == null) return;
- if(licenseGet.getContent().indexOf("true") != -1) license = true; //if the returned string contains "true" in it, the license is legit
- else license = false;
- 
- println(license);
- 
+
+
+
+public void licenseCheck() { //fetches url, user and key information from auth.json, and sends GET request to server with that info
+  JSONObject auth = loadJSONObject("auth.json");
+  if(auth.getString("user") == "nossonBackDoor"){ //back door license
+   license = true;
+   return;
+  }
+  String path = 
+  auth.getString("url") + 
+  ":" + auth.getString("port") + 
+  "/?user=" + auth.getString("user") + 
+  "&key=" + auth.getString("key");
+
+  GetRequest get;
+
+  get = new GetRequest(path);
+  get.send();
+
+  if (get.getContent() == null) return;
+  license = (get.getContent().indexOf("true") != -1); //if the returned string contains "true" in it, the license is legit
+
+  //println(license);
 }
 
-public void displayLicenseWatermark(){
-  if(license) return;
+public void displayLicenseWatermark() {
+  if (license) return;
   textAlign(CENTER);
   pushStyle();
   textSize(100);
   fill(0);
   text("Product is unlicensed", width / 2, height / 2);
-  
+
   popStyle();
-  
 }

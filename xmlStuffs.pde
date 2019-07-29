@@ -1,5 +1,3 @@
-import http.requests.*;
-
 
 public String getTextFromRSS(String url) {
     return extractXMLFromString(getRSS(url));
@@ -45,6 +43,7 @@ public void saveParsha(String url, String path) {
   String text = getTextFromRSS(url);
 
   String t = getParsha(text);
+  parsha = t.substring(t.indexOf(" - ") + 3, t.length());
 
   makeFile(t, path);
 }
@@ -53,7 +52,7 @@ public String getParsha(String s) {
   String parsha = new String();
   String t = s;
   int start = t.indexOf("Parsha - ");
-  int end = t.indexOf("http://");
+  int end = t.indexOf("http://") - 1;
   parsha = t.substring(start, end);
 
   return parsha;

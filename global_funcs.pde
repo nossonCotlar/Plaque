@@ -5,16 +5,20 @@ void keyPressed() {
   }
 }
 
-
 void init() {
+  today = new Date();
   theme = new Theme();
   stop = false;
+  
+  delay(4000);
+  System.gc();
 }
 
 void updateCheck() {
-  if (hour() == 0 && minute() == 0 && second() == 0) {
+  if (minute() % 15 == 0 && second() == 0) {
     reset();
   }
+  if(minute() % 5 == 0 && second() == 0) System.gc();
 }
 
 void freeStuffUp() {
@@ -26,7 +30,8 @@ void freeStuffUp() {
 
 void initFont() {
   PFont font;
-  font = createFont("Uniform Condensed Medium.ttf", 45);
+  font = createFont("font1.ttf", 45);
+  
   if (font != null) textFont(font);
 }
 

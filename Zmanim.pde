@@ -9,7 +9,7 @@ class Zmanim { //<>// //<>//
     saveStringToJSON(JSONPATH, getPostContent());
     file = loadJSONObject(JSONPATH);
     initZmanim();
-    printZmanim();
+    //printZmanim();
 
     exportToText("/resources/RESTapi/times.txt");
   }

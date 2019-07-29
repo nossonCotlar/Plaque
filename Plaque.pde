@@ -2,13 +2,13 @@
 // Copyright 2019
 
 void setup() {
-  config = loadJSONObject("config.json");
-  licenseCheck();
   fullScreen();
   frameRate(60); 
   rectMode(CORNER);
   noStroke();
-
+  
+  config = loadJSONObject("config.json");
+  licenseCheck();
   initFont();
   thread("init");
 }
@@ -24,5 +24,5 @@ void draw() {
       stop = true;
     }
   }
-  //println(mouseX, ' ', mouseY);
+  //println(mouseX + ' ' + mouseY);
 }
