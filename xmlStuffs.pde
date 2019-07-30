@@ -43,6 +43,7 @@ public void saveParsha(String url, String path) {
   String text = getTextFromRSS(url);
 
   String t = getParsha(text);
+  
   parsha = t.substring(t.indexOf(" - ") + 3, t.length());
 
   makeFile(t, path);

@@ -1,4 +1,4 @@
-class TextBox extends Element{
+public class TextBox extends Element{
   String[] lines;
   float textSize, offset;
   

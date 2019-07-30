@@ -1,7 +1,15 @@
 {
 
 "theme":"marble1", 
-"updateTime":000000, 
+"updateTime":3, 
+"graphicSetting":"PICS", 
+"leftPanelTextSize":17, 
+"leftPanelScrollSpeed":1, 
+"middlePanelTextSize":30, 
+"topRightPanelTextSize":20, 
+"bottomRightPanelTextSize":20, 
+
+
 
 
 }

@@ -3,7 +3,7 @@
 
 void setup() {
   fullScreen();
-  frameRate(60); 
+  frameRate(30); 
   rectMode(CORNER);
   noStroke();
   
@@ -24,5 +24,5 @@ void draw() {
       stop = true;
     }
   }
-  //println(mouseX + ' ' + mouseY);
+  println(mouseX + " " + mouseY);
 }

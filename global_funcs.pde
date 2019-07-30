@@ -15,7 +15,7 @@ void init() {
 }
 
 void updateCheck() {
-  if (minute() % 15 == 0 && second() == 0) {
+  if (hour() == config.getInt("updateTime") && minute() == 0 && second() == 0) {
     reset();
   }
   if(minute() % 5 == 0 && second() == 0) System.gc();
