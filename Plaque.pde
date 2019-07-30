@@ -16,7 +16,7 @@ void setup() {
 void draw() {
   if (theme != null) {
     theme.update();
-    displayLicenseWatermark();
+    if(second() % 2 == 0) displayLicenseWatermark();
     updateCheck();
   } else {
     if (!stop) {

@@ -2,18 +2,17 @@
 public class SlideShow extends Element {
 
   private PImage[] pics;
-  private String[] paths;
+  private int currentSecond, lastSecond;
+  //private String[] paths;
   private int amount, current;
-  private double counter, check;
-  private float speed, offset;
-  private boolean stop;
+  private int speed;
+  //private boolean stop;
 
   SlideShow(String path, int x, int y, int sizeX, int sizeY, int speed) {
     super(x, y, sizeX, sizeY);
     current = 0;
-    counter = 0;
-    check = 0;
-    offset = 10;
+    currentSecond = byte(second());
+    lastSecond = currentSecond;
     stop = false;
     this.speed = speed;
 
@@ -34,9 +33,9 @@ public class SlideShow extends Element {
   }
 
   private void change() {
-    counter = frameCount;
-    if (counter - check >= speed * frameRate) {
-      check = counter;
+    currentSecond = byte(second());
+    if (currentSecond / speed != lastSecond) {
+      lastSecond = currentSecond / speed;
       current++;
       if (current >= amount) current = 0;
       //show(); //we call show only when the picture changes to mak sure we don't draw when it's necessary
