@@ -38,12 +38,12 @@ public class Theme {
       break;
     case "PICS_AND_STATIC":
 
-      elements = (Element[])append(elements, new SlideShow("/resources/pics/", 727, 672, 453, 260, 3));
+      elements = (Element[])append(elements, new SlideShow("/resources/pics/", 727, 672, 453, 260, config.getInt("slideShowSpeed")));
       elements = (Element[])append(elements, new StaticPic(801, 380, 315, 260));
       break;
     case "PICS":
       elements = (Element[])append(elements, new Scroller("/resources/texts/middle.txt", 738, 433, 430, 250, config.getInt("middlePanelTextSize"), .7, true));
-      elements = (Element[])append(elements, new SlideShow("/resources/pics/", 727, 672, 453, 260, 3));
+      elements = (Element[])append(elements, new SlideShow("/resources/pics/", 727, 672, 453, 260, config.getInt("slideShowSpeed")));
       break;
     default:
       println("failed");
