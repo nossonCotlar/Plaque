@@ -1,17 +1,13 @@
-class TextBox{
-  float x, y, sizeX, sizeY;
+class TextBox extends Element{
   String[] lines;
   float textSize, offset;
   
   
- TextBox(String s, int x, int y, float sizeX, float sizeY, int textSize){
-   this.x = x;
-   this.y = y;
-   this.sizeX = sizeX;
-   this.sizeY = sizeY;
+ TextBox(String path, int x, int y, float sizeX, float sizeY, int textSize){
+   super(x, y, sizeX, sizeY);
    this.textSize = textSize;
    offset = 5;
-   this.lines = loadStrings(s);
+   this.lines = loadStrings(path);
  }
  
  
@@ -20,18 +16,13 @@ class TextBox{
  }
  
  void show(){
-   showBox();
-   fill(0);
+   fill(textColor2);
    textSize(textSize);
+   textAlign(CENTER, CENTER);
    for(int i = 0; i < lines.length; i++){
      
-    text(lines[i], x, y + (i * (textSize + offset)) + textSize + offset); 
+    text(lines[i], x, y + (i * (textSize + offset))); 
    }
- }
- 
- void showBox(){
-   fill(backColor);
-   rect(x - offset * 2, y, sizeX + offset * 4, sizeY + offset * 2 , 10);
  }
  
 }

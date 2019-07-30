@@ -25,11 +25,11 @@ public class Theme {
       new SlideShow("/resources/pics/", 727, 672, 453, 260, 3), 
       new Clock(width / 2, 166, 180, 71, true), 
       new AnalogClock(width / 2, 250, 120), 
-      new Scroller("/resources/texts/shulTimes.txt", 1360, 645, 400, 230, 20, .7, true), 
-      new Scroller("/resources/texts/donors.txt", 738, 433, 430, 250, 30, .7, true), 
-      new Scroller("/resources/texts/times.txt", 1360, 390, 400, 230, 20, .7, true), 
+      new Scroller("/resources/texts/bottomRight.txt", 1360, 645, 400, 230, 20, .7, true), 
+      new Scroller("/resources/texts/middle.txt", 738, 433, 430, 250, 30, .7, true), 
+      new Scroller("/resources/texts/topRight.txt", 1360, 390, 400, 230, 20, .7, true), 
       new Scroller(getPathToParshaContent(), 172, 405, 390, 460, 17, .5, false), 
-      new SideScroller("/resources/texts/sideTest.txt", 0, 995, width, 65, 25, 2) };
+      new TextBox("/resources/texts/bottom.txt", width / 2, 1020, 0, 0, 25) };
   }
 
   public void update() {
