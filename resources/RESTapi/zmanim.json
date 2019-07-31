@@ -129,7 +129,7 @@
     "Mincha30fix": "2019-07-30T13:59:00Z",
     "Tomorrow2SunsetDefault": "2019-08-01T20:14:00Z",
     "MinchaGra": "2019-07-30T14:03:00Z",
-    "CurrentTime": "2019-07-30T13:36:00Z",
+    "CurrentTime": "0001-01-01T00:00:00Z",
     "SunriseDefault": "2019-07-30T06:40:32Z",
     "Midnight": "2019-07-31T01:28:00Z",
     "Night72": "2019-07-30T21:36:00Z",
@@ -155,7 +155,7 @@
     "CityHebrew": "",
     "State": "Texas",
     "Country": "United States",
-    "CurrentTime": "2019-07-30T13:36:00Z",
+    "CurrentTime": "0001-01-01T00:00:00Z",
     "NameHtml": "<table           style='border:none;padding:0px;border-spacing:2px 0px;font-size:pt;'><tr><td>USA<\/td><td>&gt;<\/td><td>Texas<\/td><td>&gt;<\/td><td>Harris<\/td><td>&gt;<\/td><td>Houston<\/td><td>&gt;<\/td><td>77071<\/td><\/tr><\/table>",
     "DavenDirectionRL": 89,
     "NameShort": "Houston"

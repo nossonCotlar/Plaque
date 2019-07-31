@@ -35,7 +35,7 @@ class AnalogClock extends Element{
     pushMatrix();
     translate(x, y);
     rotate(scAng);
-    line(0, 0, 0, -rad + 13);
+    line(0, 0, 0, -rad + 16);
     popMatrix();
 
     //minute hand

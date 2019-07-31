@@ -9,8 +9,9 @@ public class Theme {
     fit();
 
     zmanim = new Zmanim("/resources/RESTapi/creds.json");
+    zmanim.exportToText("/resources/RESTapi/times.txt");
 
-    saveZmanim(readURLFromFile("/resources/data/url.txt"), "/resources/texts/times.txt");
+    //saveZmanim(readURLFromFile("/resources/data/url.txt"), "/resources/texts/times.txt");
     saveDailyQuote("https://www.chabad.org/tools/rss/dailyquote_rss.xml", "/resources/texts/quote.txt");
 
     initElements();
@@ -28,7 +29,7 @@ public class Theme {
       new AnalogClock(width / 2, 250, 120), 
       new Scroller("/resources/texts/bottomRight.txt", 1360, 645, 400, 230, config.getInt("bottomRightPanelTextSize"), .7, true), 
       //new Scroller("/resources/texts/middle.txt", 738, 433, 430, 250, 30, .7, true), 
-      new Scroller("/resources/texts/topRight.txt", 1360, 390, 400, 230, config.getInt("topRightPanelTextSize"), .7, true), 
+      new Scroller("/resources/RESTapi/times.txt", 1360, 410, 400, 230, config.getInt("topRightPanelTextSize"), .7, true), 
       new Scroller(getPathToParshaContent(), 172, 405, 390, 460, config.getInt("leftPanelTextSize"), config.getInt("leftPanelScrollSpeed"), false), 
       new TextBox("/resources/texts/bottom.txt", width / 2, 1020, 0, 0, 25) };
 

@@ -3,7 +3,6 @@ public class SlideShow extends Element {
 
   private PImage[] pics;
   private int currentSecond, lastSecond;
-  //private String[] paths;
   private int amount, current;
   private int speed;
   //private boolean stop;
@@ -17,8 +16,6 @@ public class SlideShow extends Element {
     this.speed = speed;
 
     loadImages(path);
-
-    //resizeImages();
   }
 
   public void update() {

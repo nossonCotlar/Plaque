@@ -24,5 +24,5 @@ void draw() {
       stop = true;
     }
   }
-  println(mouseX + " " + mouseY);
+  //println(mouseX + " " + mouseY);
 }
