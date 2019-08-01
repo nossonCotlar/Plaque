@@ -3,12 +3,15 @@
 
 void setup() {
   fullScreen();
+
   frameRate(30); 
   rectMode(CORNER);
   noStroke();
   
   config = loadJSONObject("config.json");
+ 
   licenseCheck();
+ 
   initFont();
   thread("init");
 }
@@ -24,5 +27,9 @@ void draw() {
       stop = true;
     }
   }
-  //println(mouseX + " " + mouseY);
+  
+}
+
+void mousePressed(){
+ if(mouseX != 0) println(width / float(mouseX) + " " + height / float(mouseY) + " : " + mouseX + " " + mouseY); 
 }

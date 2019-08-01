@@ -16,7 +16,9 @@ public void licenseCheck() { //fetches url, user and key information from auth.j
   GetRequest get;
 
   get = new GetRequest(path);
+  
   get.send();
+  
 
   if (get.getContent() == null) return;
   license = (get.getContent().indexOf("true") != -1); //if the returned string contains "true" in it, the license is legit

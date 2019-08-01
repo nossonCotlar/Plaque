@@ -3,7 +3,7 @@ public class TextBox extends Element{
   float textSize, offset;
   
   
- TextBox(String path, int x, int y, float sizeX, float sizeY, int textSize){
+ TextBox(String path, float x, float y, float sizeX, float sizeY, float textSize){
    super(x, y, sizeX, sizeY);
    this.textSize = textSize;
    offset = 5;

@@ -7,7 +7,7 @@ public class SlideShow extends Element {
   private int speed;
   //private boolean stop;
 
-  SlideShow(String path, int x, int y, int sizeX, int sizeY, int speed) {
+  SlideShow(String path, float x, float y, float sizeX, float sizeY, int speed) {
     super(x, y, sizeX, sizeY);
     current = 0;
     currentSecond = byte(second());

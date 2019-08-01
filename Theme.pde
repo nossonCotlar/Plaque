@@ -25,26 +25,26 @@ public class Theme {
   public void initElements() {
     elements = new Element[] {
       //new SlideShow("/resources/pics/", 727, 672, 453, 260, 3), 
-      new Clock(width / 2, 166, 180, 71, true), 
-      new AnalogClock(width / 2, 250, 120), 
-      new Scroller("/resources/texts/bottomRight.txt", 1360, 645, 400, 230, config.getInt("bottomRightPanelTextSize"), .7, true), 
+      new Clock(width / 2, height / 6.5060, width / 6, height / 15.2112676, true), 
+      new AnalogClock(width / 2, width / 7.68, height / 9), 
+      new Scroller("/resources/texts/bottomRight.txt", width / 1.41176, height / 1.6744, width / 4.8, height / 4.69565, config.getInt("bottomRightPanelTextSize") * width / 1920, .7, true), 
       //new Scroller("/resources/texts/middle.txt", 738, 433, 430, 250, 30, .7, true), 
-      new Scroller("/resources/RESTapi/times.txt", 1360, 410, 400, 230, config.getInt("topRightPanelTextSize"), .7, true), 
-      new Scroller(getPathToParshaContent(), 172, 405, 390, 460, config.getInt("leftPanelTextSize"), config.getInt("leftPanelScrollSpeed"), false), 
-      new TextBox("/resources/texts/bottom.txt", width / 2, 1020, 0, 0, 25) };
+      new Scroller("/resources/RESTapi/times.txt", width / 1.41176, height / 2.63415, width / 4.8, height / 4.69565, config.getInt("topRightPanelTextSize") * width / 1920, .7, true), 
+      new Scroller(getPathToParshaContent(), width / 11.1, height / 2.667, width / 4.923, height / 2.3478, config.getInt("leftPanelTextSize") * width / 1920, config.getInt("leftPanelScrollSpeed"), false), 
+      new TextBox("/resources/texts/bottom.txt", width / 2, height / 1.05882, 0, 0, 25 * width / 1920) };
 
     switch(config.getString("graphicSetting")) {
     case "NONE":
-      elements = (Element[])append(elements, new Scroller("/resources/texts/middle.txt", 738, 433, 430, 250, config.getInt("middlePanelTextSize"), .7, true));
+      elements = (Element[])append(elements, new Scroller("/resources/texts/middle.txt", width / 2.6016, height / 2.4942, width / 4.465116, height / 4.32, config.getInt("middlePanelTextSize") * width / 1920, .7, true));
       break;
     case "PICS_AND_STATIC":
 
-      elements = (Element[])append(elements, new SlideShow("/resources/pics/", 727, 672, 453, 260, config.getInt("slideShowSpeed")));
-      elements = (Element[])append(elements, new StaticPic(801, 380, 315, 260));
+      elements = (Element[])append(elements, new SlideShow("/resources/pics/", width / 2.64099, height / 1.60714, width / 4.23841, height / 4.15385, config.getInt("slideShowSpeed")));
+      elements = (Element[])append(elements, new StaticPic(width / 2.397, height / 2.8421, width / 6.0952, height / 4.153846));
       break;
     case "PICS":
-      elements = (Element[])append(elements, new Scroller("/resources/texts/middle.txt", 738, 433, 430, 250, config.getInt("middlePanelTextSize"), .7, true));
-      elements = (Element[])append(elements, new SlideShow("/resources/pics/", 727, 672, 453, 260, config.getInt("slideShowSpeed")));
+      elements = (Element[])append(elements, new Scroller("/resources/texts/middle.txt", width / 2.6016, height / 2.4942, width / 4.465116, height / 4.32,  config.getFloat("middlePanelTextSize") * width / 1920, .7, true));
+      elements = (Element[])append(elements, new SlideShow("/resources/pics/", width / 2.64099, height / 1.60714, width / 4.23841, height / 4.15385, config.getInt("slideShowSpeed")));
       break;
     default:
       println("failed");
@@ -70,6 +70,9 @@ public class Theme {
   private void fit() {
     if (bg.width != width || bg.height != height) {
       bg.resize(width, height);
+    }
+    if(behind.width != width || behind.height != height){
+     behind.resize(width, height); 
     }
   }
 

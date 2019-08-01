@@ -3,7 +3,7 @@ import java.util.Date;
 class Clock extends Element{
   private int s, m, h;
   private String time;
-  private int textSize = 37;
+  private float textSize = 37 * float(width) / 1920;
   private String dayOfWeek;
   private String parsha;
   private String date;
@@ -48,10 +48,10 @@ class Clock extends Element{
     fill(textColor2);
     textSize(textSize);
     textAlign(LEFT, CENTER);
-    text(time, x - 230, y);
+    text(time, x - width / 8.34783, y);
     
     textAlign(RIGHT, CENTER);
-    text(date, x + 230, y);
+    text(date, x + width / 8.34783, y);
     if (!full) {
       textAlign(LEFT);
       return;
@@ -59,8 +59,8 @@ class Clock extends Element{
     textAlign(CENTER, CENTER);
     fill(textColor1);
     textSize(textSize);
-    text(dayOfWeek + ' ' + hebrew, x - width / 3 + 40, y);
-    text(parsha, x + width / 3 - 40, y);
+    text(dayOfWeek + ' ' + hebrew, x - width / 3 + width / 48, y);
+    text(parsha, x + width / 3 - width / 48, y);
     textAlign(LEFT);
   }
 

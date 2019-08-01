@@ -7,7 +7,7 @@ public class Scroller extends Element { //<>//
   private boolean small, stop, center;
 
 
-  Scroller(String s, int x, int y, int sizeX, int sizeY, int textSize, float speed, boolean center) {
+  Scroller(String s, float x, float y, float sizeX, float sizeY, float textSize, float speed, boolean center) {
 
     super(x, y, sizeX, sizeY);
     cx = x;
