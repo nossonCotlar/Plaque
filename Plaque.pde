@@ -10,6 +10,7 @@ void setup() {
   
   config = loadJSONObject("config.json");
  
+  versionCheck();
   licenseCheck();
  
   initFont();
@@ -21,6 +22,7 @@ void draw() {
     theme.update();
     if(second() % 2 == 0) displayLicenseWatermark();
     updateCheck();
+    displayUpdateAvailable();
   } else {
     if (!stop) {
       updateInfoDisplay();

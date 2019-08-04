@@ -21,6 +21,28 @@ void updateCheck() {
   if(minute() % 5 == 0 && second() == 0) System.gc();
 }
 
+void versionCheck(){
+ GetRequest get = new GetRequest("http://shulscreen.ddns.net:6969/version");
+ get.send();
+ 
+ if(get.getContent() != null){
+  updateAvailable = false; 
+  return;
+ }
+ if(get.getContent().contains(version)) return;
+ updateAvailable = true;
+}
+
+void displayUpdateAvailable(){
+ if(updateAvailable){
+  textAlign(LEFT, CENTER);
+  fill(0);
+  textSize(20);
+  text("Update is available, please download update", 30, 30);
+  
+ }
+}
+
 void freeStuffUp() {
   theme.destroy();
   theme = null;
