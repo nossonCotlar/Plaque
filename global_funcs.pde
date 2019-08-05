@@ -22,13 +22,14 @@ void updateCheck() {
 }
 
 void versionCheck(){
- GetRequest get = new GetRequest("http://shulscreen.ddns.net:6969/version");
+ GetRequest get = new GetRequest(config.getString("url") + "/version");
  get.send();
  
  if(get.getContent() == null){
-  updateAvailable = false; 
+   offline = true;
   return;
  }
+ offline = false;
  if(get.getContent().contains(version)) return;
  updateAvailable = true;
 }
@@ -70,4 +71,13 @@ void updateInfoDisplay() {
   textSize(50);
   text("Updating Information, Please Wait...", width / 2, height / 2);
   textAlign(LEFT);
+}
+
+void displayOffline(){
+   background(backColor);
+  fill(0);
+  textAlign(CENTER, CENTER);
+  textSize(30);
+  text("Cannot Connect to Servers. Please check connection", width / 2, height / 2);
+  noLoop();
 }

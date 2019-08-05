@@ -1,6 +1,10 @@
 
 public String getTextFromRSS(String url) {
-    return extractXMLFromString(getRSS(url));
+  String t = extractXMLFromString(getRSS(url));
+  if (t == null) {
+    return null;
+  };
+  return t;
 }
 
 public String readURLFromFile(String file) {
@@ -15,12 +19,17 @@ public String getRSS(String url) { //gets the XML content of a given URL and ret
   GetRequest get = new GetRequest(url);
   get.send();
 
+  if (get.getContent() == null) {
+    return null;
+  }
+
   l[0] = get.getContent();
 
   return l[0];
 }
 
 public String extractXMLFromString(String s) { //takes a string which is formatted in XML and returns plaintext content
+  if (s == null) return null;
   XML x = parseXML(s);
   return x.getContent();
 }
@@ -33,9 +42,10 @@ public void makeFile(String src, String dest) {
 
 public void saveDailyQuote(String url, String path) {
   String text = getTextFromRSS(url);
+  String t;
 
-  String t = getDailyQuote(text);
-
+  if (text == null) t = "Not Found :(";
+  else t  = getDailyQuote(text);
   makeFile(t, path);
 }
 
@@ -43,7 +53,7 @@ public void saveParsha(String url, String path) {
   String text = getTextFromRSS(url);
 
   String t = getParsha(text);
-  
+
   parsha = t.substring(t.indexOf(" - ") + 3, t.length());
 
   makeFile(t, path);

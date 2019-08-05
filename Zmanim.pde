@@ -13,6 +13,10 @@ class Zmanim { //<>// //<>//
   }
 
   public void exportToText(String path) {
+    if(zmanim == null) {
+    saveStrings(path, new String[] {"Not Found :("});
+    return;
+    }
     String[] temp = new String[zmanim.length];
 
     for (int i = 0; i < zmanim.length; i++) {
@@ -45,15 +49,22 @@ class Zmanim { //<>// //<>//
     post.addData("key", APIKEY);
     post.addData("user", APIUSER);
     post.send();
+    if(post.getContent() == null) return null;
     return post.getContent();
   }
 
   public void saveStringToJSON(String path, String s) {
+    if(s == null){
+     JSONObject t = parseJSONObject("{}"); 
+     saveJSONObject(t, path);
+     return;
+    }
     JSONObject json = parseJSONObject(s);
     saveJSONObject(json, path);
   }
 
   private void initZmanim() {
+    if(file.getJSONObject("Zman") == null) return;
     JSONObject zmanObj = file.getJSONObject("Zman");
     zmanim = new Zman[]{
       new Zman("Alos Ha-Shachar", zmanObj.getString("Dawn72")), 

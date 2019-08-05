@@ -29,7 +29,7 @@ void draw() {
       stop = true;
     }
   }
-  
+  if(offline) displayOffline();
 }
 
 void mousePressed(){

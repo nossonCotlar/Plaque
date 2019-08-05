@@ -1,6 +1,6 @@
 import java.util.Date;
 
-class Clock extends Element{
+class Clock extends Element {
   private int s, m, h;
   private String time;
   private float textSize = 37 * float(width) / 1920;
@@ -24,7 +24,7 @@ class Clock extends Element{
     s = second();
     m = minute();
     h = hour();
-    
+
     println(getPathToParshaContent());
   }
 
@@ -49,7 +49,7 @@ class Clock extends Element{
     textSize(textSize);
     textAlign(LEFT, CENTER);
     text(time, x - width / 8.34783, y);
-    
+
     textAlign(RIGHT, CENTER);
     text(date, x + width / 8.34783, y);
     if (!full) {
@@ -91,26 +91,30 @@ class Clock extends Element{
   private void initDate() {
     /*
     String[] months = {
-      "January", 
-      "February", 
-      "March", 
-      "April", 
-      "May", 
-      "June", 
-      "July", 
-      "August", 
-      "September", 
-      "October", 
-      "November", 
-      "December", 
-    }; */
+     "January", 
+     "February", 
+     "March", 
+     "April", 
+     "May", 
+     "June", 
+     "July", 
+     "August", 
+     "September", 
+     "October", 
+     "November", 
+     "December", 
+     }; */
 
     date = month() + "/" + day() + "/" + year() % 1000;
   }
 
   private void initHebrew() {
     String[] temp = loadStrings("/resources/texts/quote.txt");
-    hebrew = temp[0].substring(0, temp[0].indexOf(" - "));
+    if (temp[0].indexOf(" - ") != -1) {
+      hebrew = temp[0].substring(0, temp[0].indexOf(" - "));
+      return;
+    }
+    hebrew = temp[0];
   }
 
   void destroy() {
