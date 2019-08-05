@@ -81,6 +81,12 @@ public class Scroller extends Element { //<>//
 
   private void generateFromFile(String s) { //this takes a file which isn't necessarily spaced to fit the text box size, and attempts to size it properly
     String[] input = loadStrings(s);
+    if(input == null){
+     text = new String[2]; 
+     text[0] = "Could not load file from path: ";
+     text[1] = s;
+     return;
+    }
     String temp = input[0];
     StringList lines = new StringList();
     int spaceIdx = 0;

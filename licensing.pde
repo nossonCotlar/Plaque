@@ -9,7 +9,7 @@ public void licenseCheck() { //fetches url, user and key information from auth.j
   }
   String path = 
   auth.getString("url") + 
-  ":" + auth.getString("port") + 
+  ":" + auth.getString("port") + "/verify" + 
   "/?user=" + auth.getString("user") + 
   "&key=" + auth.getString("key");
 

@@ -25,7 +25,7 @@ void versionCheck(){
  GetRequest get = new GetRequest("http://shulscreen.ddns.net:6969/version");
  get.send();
  
- if(get.getContent() != null){
+ if(get.getContent() == null){
   updateAvailable = false; 
   return;
  }
