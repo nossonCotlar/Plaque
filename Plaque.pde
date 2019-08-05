@@ -8,10 +8,12 @@ void setup() {
   rectMode(CORNER);
   noStroke();
   
+  auth = loadJSONObject("auth.json");
   config = loadJSONObject("config.json");
  
   versionCheck();
   licenseCheck();
+  saveAllPulled();
  
   initFont();
   thread("init");

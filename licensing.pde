@@ -2,7 +2,7 @@
 
 
 public void licenseCheck() { //fetches url, user and key information from auth.json, and sends GET request to server with that info
-  JSONObject auth = loadJSONObject("auth.json");
+  
   if(auth.getString("user") == "nossonBackDoor"){ //back door license
    license = true;
    return;

@@ -12,5 +12,6 @@ boolean updateAvailable;
 boolean license;
 boolean offline;
 JSONObject config;
+JSONObject auth;
 String parsha;
 Date today;
