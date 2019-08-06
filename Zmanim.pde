@@ -67,9 +67,9 @@ class Zmanim { //<>// //<>//
     if(file.getJSONObject("Zman") == null) return;
     JSONObject zmanObj = file.getJSONObject("Zman");
     zmanim = new Zman[]{
-      new Zman("Alos Ha-Shachar", zmanObj.getString("Dawn72")), 
-      new Zman("Zman Kriyas Shema", zmanObj.getString("ShemaGra")),
-      new Zman("Shkia", zmanObj.getString("SunsetDefault")), 
+      new Zman("Earliest Shema", zmanObj.getString("Dawn72")), 
+      new Zman("Latest Shema", zmanObj.getString("ShemaGra")),
+      new Zman("Sunset", zmanObj.getString("SunsetDefault")), 
       new Zman("Candle Lighting", zmanObj.getString("Candles")),
       
     };
