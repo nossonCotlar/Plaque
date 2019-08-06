@@ -8,10 +8,7 @@ public String getTextFromRSS(String url) {
 }
 
 public String readURLFromFile(String file) {
-  String[] l = new String[1];
-
-  l = loadStrings(file);
-  return l[0];
+  return loadStrings(file)[0];
 }
 
 public String getRSS(String url) { //gets the XML content of a given URL and returns a string with its contents

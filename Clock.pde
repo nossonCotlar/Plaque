@@ -76,17 +76,6 @@ class Clock extends Element {
     dayOfWeek = weekDays[today.getDay()];
   }
 
-  private void initParsha() {
-    try {
-      saveParsha("https://www.chabad.org/tools/rss/parsha_rss.xml", "/resources/texts/parsha.txt");
-      String[] temp = loadStrings("/resources/texts/parsha.txt");
-      parsha = temp[0];
-    } 
-    catch(Exception e) {
-      parsha = "Not Found :(";
-    }
-  }
-
   private void initDate() {
     /*
     String[] months = {
@@ -108,12 +97,12 @@ class Clock extends Element {
   }
 
   private void initHebrew() {
-    String[] temp = loadStrings("/resources/texts/quote.txt");
-    if (temp[0].indexOf(" - ") != -1) {
-      hebrew = temp[0].substring(0, temp[0].indexOf(" - "));
+    String temp = loadStrings("/resources/texts/quote.txt")[0];
+    if (temp.indexOf(" - ") != -1) {
+      hebrew = temp.substring(0, temp.indexOf(" - "));
       return;
     }
-    hebrew = temp[0];
+    hebrew = temp;
   }
 
   void destroy() {

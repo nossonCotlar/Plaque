@@ -2,8 +2,8 @@ public class StaticPic extends Element {
   PImage pic;
  StaticPic(float x, float y, float sizeX, float sizeY){
   super(x, y, sizeX, sizeY);
-  File[] files = listFiles("/resources/static"); //get file array from directory
-  pic = loadImage(files[0].getPath());
+  File file = listFiles("/resources/static")[0]; //get file array from directory
+  pic = loadImage(file.getPath());
   pic.resize(int(sizeX), 0);
   if(pic.height > sizeY) pic.resize(0, int(sizeY));
   
