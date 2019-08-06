@@ -82,11 +82,15 @@ void displayOffline(){
   noLoop();
 }
 
+public void setParsha(String url) {
+  String text = getTextFromRSS(url);
+
+  parsha = getParsha(text);
+}
+
 public void initParsha() {
     try {
-      saveParsha("https://www.chabad.org/tools/rss/parsha_rss.xml", "/resources/texts/parsha.txt");
-      String temp = loadStrings("/resources/texts/parsha.txt")[0];
-      parsha = temp;
+      setParsha("https://www.chabad.org/tools/rss/parsha_rss.xml");
     } 
     catch(Exception e) {
       parsha = "Not Found :(";
