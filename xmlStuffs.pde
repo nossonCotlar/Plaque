@@ -54,15 +54,13 @@ public void saveParsha(String url, String path) {
 
   String t = getParsha(text);
 
-  parsha = t.substring(t.indexOf(" - ") + 3, t.length());
-
   makeFile(t, path);
 }
 
 public String getParsha(String s) {
   String parsha = new String();
   String t = s;
-  int start = t.indexOf("Parsha - ");
+  int start = t.indexOf("Parsha - ") + 9;
   int end = t.indexOf("http://") - 1;
   parsha = t.substring(start, end);
 

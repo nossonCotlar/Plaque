@@ -1,3 +1,3 @@
 public String getPathToParshaContent(){
-  return "/resources/parsha/" + parsha + "/" + (today.getDay() + 1) + ".txt";
+  return config.getString("url") + "/parsha/" + parsha + "/" + (today.getDay() + 1);
 }

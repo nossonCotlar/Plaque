@@ -43,3 +43,12 @@ void saveAllPulled() {
     }
   }
 }
+
+void pullParshaContent(){
+ GetRequest get = new GetRequest(getPathToParshaContent());
+ get.send();
+ 
+ if(get.getContent() == null) return;
+ saveStrings("/resources/texts/left.txt", new String[] {get.getContent()});
+ 
+}

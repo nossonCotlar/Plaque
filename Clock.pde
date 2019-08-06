@@ -5,7 +5,6 @@ class Clock extends Element {
   private String time;
   private float textSize = 37 * float(width) / 1920;
   private String dayOfWeek;
-  private String parsha;
   private String date;
   private String hebrew;
   private boolean full;
@@ -16,7 +15,7 @@ class Clock extends Element {
 
     if (full) {
       setWeekDay();
-      initParsha();
+      //initParsha();
       initDate();
       initHebrew();
     }
@@ -60,7 +59,7 @@ class Clock extends Element {
     fill(textColor1);
     textSize(textSize);
     text(dayOfWeek + ' ' + hebrew, x - width / 3 + width / 48, y);
-    text(parsha, x + width / 3 - width / 48, y);
+    text("Parsha - " + parsha, x + width / 3 - width / 48, y);
     textAlign(LEFT);
   }
 
