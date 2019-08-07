@@ -82,6 +82,10 @@ void displayOffline(){
   noLoop();
 }
 
+public String getPathToParshaContent(){
+  return config.getString("url") + "/parsha/" + parsha + "/" + (today.getDay() + 1);
+}
+
 public void setParsha(String url) {
   String text = getTextFromRSS(url);
 
