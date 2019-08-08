@@ -3,6 +3,7 @@
 
 void setup() {
   fullScreen();
+  //size(1920, 1080);
 
   frameRate(30); 
   rectMode(CORNER);
