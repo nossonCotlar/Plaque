@@ -89,9 +89,7 @@ public class Scroller extends Element { //<>//
      return;
     }
     
-    println(int(input[0].charAt(0)));
-    
-    for(int i = 0; i < input.length; i++){ //fix unrecognized quotes
+    for(int i = 0; i < input.length; i++){ //fix unrecognized characters
       input[i] = input[i].replace(char(19), '\"'); //get rid of curly starting quotes
       input[i] = input[i].replace(char(20), '\"'); //get rid of curly ending quotes
       input[i] = input[i].replace(char(17), '\''); //get rid of curly single quote 
