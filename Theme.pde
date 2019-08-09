@@ -36,7 +36,7 @@ public class Theme {
       new AnalogClock(width / 2, width / 7.68, height / 9), 
       new TextBox("/resources/texts/middle.txt", width / 2, height / 2.37, width / 4.465116, height / 4.32, config.getInt("middlePanelTextSize") * width / 1920, true, false), 
       //new Scroller("/resources/texts/middle.txt", 738, 433, 430, 250, 30, .7, true), 
-      new TextBox("/resources/RESTapi/times.txt", width / 1.41176, height / 2.4, width / 4.8, height / 4.69565, config.getInt("topRightPanelTextSize") * width / 1920, false, false), 
+      new TextBox("/resources/RESTapi/times.txt", width / 1.41176, height / 2.9, width / 4.8, height / 4.69565, config.getInt("topRightPanelTextSize") * width / 1920, false, false), 
       new Scroller("/resources/texts/left.txt", width / 11.1, height / 2.667, width / 4.923, height / 2.3478, config.getInt("leftPanelTextSize") * width / 1920, config.getInt("leftPanelScrollSpeed"), false),
       //new Scroller("/resources/texts/bottomRight.txt", width / 1.41176, height / 1.8848, width / 4.8, height / 4.69565, config.getInt("bottomRightPanelTextSize") * width / 1920, .7, false), 
 
