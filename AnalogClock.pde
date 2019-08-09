@@ -24,9 +24,6 @@ class AnalogClock extends Element{
   void show() {
     pushStyle();
     
-    //draw the circe graphic
-    //image(outline, x - wid, y - hi);
-
     //second hand
     strokeWeight(scStroke);
     stroke(200);

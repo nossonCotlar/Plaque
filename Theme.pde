@@ -1,12 +1,15 @@
 public class Theme {
   private Element[] elements;
   private PImage bg, behind;
+  private String leftTitle, rightTitle;
   private Zmanim zmanim;
 
   Theme() {
     bg = loadImage("/resources/theme/" + config.getString("theme") + "/theme.png");
     behind = loadImage("/resources/theme/" + config.getString("theme") + "/behind.png");
     fit();
+    leftTitle = config.getString("leftPanelTitle");
+    rightTitle = config.getString("rightPanelTitle");
 
 
     saveDailyQuote("https://www.chabad.org/tools/rss/dailyquote_rss.xml", "/resources/texts/quote.txt");
@@ -66,6 +69,7 @@ public class Theme {
     showBehind();
     show();
     for (int i = 0; i < elements.length; i++) elements[i].update();
+    showTitles();
   }
 
   private void show() {
@@ -83,6 +87,16 @@ public class Theme {
     if (behind.width != width || behind.height != height) {
       behind.resize(width, height);
     }
+  }
+  
+  private void showTitles(){
+    textFont(font2);
+    fill(textColor2);
+    textSize(height / 18);
+    textAlign(CENTER, CENTER);
+    text(leftTitle, width / 5.4, height / 3.76306);
+    text(rightTitle, width / 1.225, height / 3.76306);
+    textFont(font);
   }
 
 

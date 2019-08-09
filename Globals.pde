@@ -13,5 +13,6 @@ boolean license;
 boolean offline;
 JSONObject config;
 JSONObject auth;
+PFont font, font2;
 String parsha;
 Date today;

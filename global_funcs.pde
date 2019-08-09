@@ -52,8 +52,9 @@ void freeStuffUp() {
 }
 
 void initFont() {
-  PFont font;
+  //PFont font;
   font = createFont("font1.ttf", 45);
+  font2 = createFont("font2.otf", 45);
   
   if (font != null) textFont(font);
 }
