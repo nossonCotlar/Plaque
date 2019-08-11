@@ -44,7 +44,7 @@ public class Theme {
 
     switch(config.getString("graphicSetting")) {
     case "NONE":
-      elements = (Element[]) append(elements, new Scroller("/resources/texts/bottomRight.txt", width / 1.41176, height / 1.6744, width / 4.8, height / 4.69565, config.getInt("bottomRightPanelTextSize") * width / 1920, .7, false));
+      elements = (Element[]) append(elements, new TextBox("/resources/texts/bottomRight.txt", width / 1.41176, height / 1.87000, width / 4.8, height / 9.3913, config.getInt("bottomRightPanelTextSize") * width / 1920, false, false));
      
       break;
     case "PICS_AND_STATIC":
@@ -55,7 +55,7 @@ public class Theme {
       break;
     case "PICS":
       //elements = (Element[])append(elements, new Scroller("/resources/texts/middle.txt", width / 2.6016, height / 2.4942, width / 4.465116, height / 4.32, config.getFloat("middlePanelTextSize") * width / 1920, .7, true));
-      elements = (Element[]) append(elements, new Scroller("/resources/texts/bottomRight.txt", width / 1.41176, height / 1.6744, width / 4.8, height / 4.69565, config.getInt("bottomRightPanelTextSize") * width / 1920, .7, false));
+      elements = (Element[]) append(elements, new TextBox("/resources/texts/bottomRight.txt", width / 1.41176, height / 1.87000, width / 4.8, height / 9.3913, config.getInt("bottomRightPanelTextSize") * width / 1920, false, false));
       elements = (Element[])append(elements, new SlideShow("/resources/pics/", width / 2.64099, height / 1.60714, width / 4.23841, height / 4.15385, config.getInt("slideShowSpeed")));
       break;
     default:
