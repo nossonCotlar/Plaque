@@ -55,7 +55,7 @@ void initFont() {
   //PFont font;
   font = createFont("font1.ttf", 45);
   font2 = createFont("font2.otf", 45);
-  font3 = createFont("font3.otf", 45);
+  //font3 = createFont("font3.otf", 45);
   
   if (font != null) textFont(font);
 }
