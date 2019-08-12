@@ -2,6 +2,9 @@
 public class SlideShow extends Element {
 
   private PImage[] pics;
+  private PImage[] test;
+  private File[] files;
+  private int currentPic;
   private int currentSecond, lastSecond;
   private int amount, current;
   private int speed;
@@ -14,8 +17,16 @@ public class SlideShow extends Element {
     lastSecond = currentSecond;
     stop = false;
     this.speed = speed;
+    
+    test = new PImage[2];
+    files = listFiles(path);
+    amount = files.length;
+    currentPic = 0;
+    current = 0;
+    
 
-    loadImages(path);
+  
+    //loadImages(path);
   }
 
   public void update() {
@@ -25,22 +36,29 @@ public class SlideShow extends Element {
 
   private void show() {
     //showBox();
-    if (pics[current] == null) return;
-    image(pics[current], x + (sizeX - pics[current].width) / 2, y);
+    if (test[currentPic] == null) return;
+    if(test[currentPic].width == 0) return;
+    if(test[currentPic].width != sizeX) test[currentPic].resize(int(sizeX), 0);
+    if(test[currentPic].height > sizeY) test[currentPic].resize(0, int(sizeY));
+   
+    image(test[currentPic], x + (sizeX - test[currentPic].width) / 2, y);
   }
 
   private void change() {
-    currentSecond = byte(second());
+    currentSecond = second();
     if (currentSecond / speed != lastSecond) {
       lastSecond = currentSecond / speed;
       current++;
+      currentPic++;
+      if(currentPic >= 2) currentPic = 0;
       if (current >= amount) current = 0;
+      test[currentPic] = requestImage(files[current].getPath());
       //show(); //we call show only when the picture changes to mak sure we don't draw when it's necessary
     }
   }
 
   private void loadImages(String path) {
-    File[] files = listFiles(path); //get file array from directory
+    files = listFiles(path); //get file array from directory
     amount = files.length;
     if (amount == 0) {
       amount = 1;
