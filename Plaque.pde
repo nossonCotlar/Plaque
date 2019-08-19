@@ -8,22 +8,23 @@ void setup() {
   frameRate(30); 
   rectMode(CORNER);
   noStroke();
-  
+
   auth = loadJSONObject("auth.json");
   config = loadJSONObject("config.json");
- 
+
   versionCheck();
   licenseCheck();
   saveAllPulled();
- 
+
   initFont();
   thread("init");
 }
 
 void draw() {
+  detectSecondChanged();
   if (theme != null) {
     theme.update();
-    if(second() % 2 == 0) displayLicenseWatermark();
+    if (second() % 2 == 0) displayLicenseWatermark();
     updateCheck();
     displayUpdateAvailable();
   } else {
@@ -32,9 +33,9 @@ void draw() {
       stop = true;
     }
   }
-  if(offline) displayOffline();
+  if (offline) displayOffline();
 }
 
-void mousePressed(){
- if(mouseX != 0) println(width / float(mouseX) + " " + height / float(mouseY) + " : " + mouseX + " " + mouseY); 
+void mousePressed() {
+  if (mouseX != 0) println(width / float(mouseX) + " " + height / float(mouseY) + " : " + mouseX + " " + mouseY);
 }

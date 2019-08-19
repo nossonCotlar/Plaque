@@ -66,6 +66,15 @@ void reset(){
  thread("init");
 }
 
+void detectSecondChanged(){
+ if(prevSecond != second()){
+   secondChanged = true;
+   return;
+ }
+ prevSecond = second();
+ if(!secondChanged) secondChanged = true;
+}
+
 void generalMessage(String s){
   background(backColor);
   fill(0);
