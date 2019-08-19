@@ -1,8 +1,9 @@
 public class Theme {
   private Element[] elements;
   private PImage bg, behind;
-  private String leftTitle, rightTitle;
+  private String mainTitle, middleTitle, leftTitle, rightTitle;
   private Zmanim zmanim;
+  private int lastSecond;
 
   Theme() {
     bg = loadImage("/resources/theme/" + config.getString("theme") + "/theme.png");
@@ -10,6 +11,9 @@ public class Theme {
     fit();
     leftTitle = config.getString("leftPanelTitle");
     rightTitle = config.getString("rightPanelTitle");
+    mainTitle = config.getString("mainTitle");
+    middleTitle = config.getString("middleTitle");
+    
 
 
     saveDailyQuote("https://www.chabad.org/tools/rss/dailyquote_rss.xml", "/resources/texts/quote.txt");
@@ -22,6 +26,7 @@ public class Theme {
     pullParshaContent();
 
     initElements();
+    lastSecond = second();
 
     //printArray(loadStrings(getPathToParshaContent()));
 
@@ -37,7 +42,7 @@ public class Theme {
       new TextBox("/resources/texts/middle.txt", width / 2, height / 2.37, width / 4.465116, height / 4.32, config.getInt("middlePanelTextSize") * width / 1920, true, false), 
       //new Scroller("/resources/texts/middle.txt", 738, 433, 430, 250, 30, .7, true), 
       new TextBox("/resources/RESTapi/times.txt", width / 1.41176, height / 2.9, width / 4.8, height / 4.69565, config.getInt("topRightPanelTextSize") * width / 1920, false, false), 
-      new Scroller("/resources/texts/left.txt", width / 11.1, height / 2.667, width / 4.923, height / 2.3478, config.getInt("leftPanelTextSize") * width / 1920, config.getInt("leftPanelScrollSpeed"), false),
+      new Scroller("/resources/texts/left.txt", width / 11.1, height / 2.667, width / 4.923, height / 2.3478, config.getFloat("leftPanelTextSize") * width / 1920, config.getInt("leftPanelScrollSpeed"), false),
       //new Scroller("/resources/texts/bottomRight.txt", width / 1.41176, height / 1.8848, width / 4.8, height / 4.69565, config.getInt("bottomRightPanelTextSize") * width / 1920, .7, false), 
 
       new TextBox("/resources/texts/bottom.txt", width / 2, height / 1.05882, 0, 0, 25 * width / 1920, true, true) };
@@ -96,6 +101,14 @@ public class Theme {
     textAlign(CENTER, CENTER);
     text(leftTitle, width / 5.4, height / 3.76306);
     text(rightTitle, width / 1.225, height / 3.76306);
+    
+    textFont(font3);
+    textSize(height / 18);
+    text(mainTitle, width / 2, height / 14.79452);
+    textSize(height / 28);
+    text(middleTitle, width / 2, height / 2.7);
+    
+    
     textFont(font);
   }
 
