@@ -17,30 +17,30 @@ public class SlideShow extends Element {
     lastSecond = currentSecond;
     stop = false;
     this.speed = speed;
-    
+
     test = new PImage[2];
     files = listFiles(path);
     amount = files.length;
     currentPic = 0;
     current = 0;
-    
 
-  
+
+
     //loadImages(path);
   }
 
   public void update() {
     change();
+    resizeOnce();
     show();
   }
 
   private void show() {
     //showBox();
     if (test[currentPic] == null) return;
-    if(test[currentPic].width == 0) return;
-    if(test[currentPic].width != sizeX) test[currentPic].resize(int(sizeX), 0);
-    if(test[currentPic].height > sizeY) test[currentPic].resize(0, int(sizeY));
-   
+    if (test[currentPic].width == 0) return;
+
+
     image(test[currentPic], x + (sizeX - test[currentPic].width) / 2, y);
   }
 
@@ -50,10 +50,17 @@ public class SlideShow extends Element {
       lastSecond = currentSecond / speed;
       current++;
       currentPic++;
-      if(currentPic >= 2) currentPic = 0;
+      if (currentPic >= 2) currentPic = 0;
       if (current >= amount) current = 0;
       test[currentPic] = requestImage(files[current].getPath());
       //show(); //we call show only when the picture changes to mak sure we don't draw when it's necessary
+    }
+  }
+
+  private void resizeOnce() {
+    if (test[currentPic].width > sizeX) {
+      test[currentPic].resize(int(sizeX), 0);
+      if (test[currentPic].height > sizeY) test[currentPic].resize(0, int(sizeY));
     }
   }
 
@@ -71,7 +78,7 @@ public class SlideShow extends Element {
 
     for (int i = 0; i < amount; i++) {
       pics[i] = loadImage(files[i].getPath()); //load images
-      
+
       pics[i].resize(int(sizeX), 0); //then resize
       if (pics[i].height > sizeY) {
         pics[i].resize(0, int(sizeY));
@@ -80,10 +87,10 @@ public class SlideShow extends Element {
   }
 
   public void destroy() {
-    for (int i = 0; i < pics.length; i++) {
-      g.removeCache(pics[i]);
-      pics[i] = null;
+    for (int i = 0; i < test.length; i++) {
+      g.removeCache(test[i]);
+      test[i] = null;
     }
-    pics = null;
+    test = null;
   }
 }
