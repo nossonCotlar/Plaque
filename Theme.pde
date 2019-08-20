@@ -42,7 +42,7 @@ public class Theme {
       new TextBox("/resources/texts/middle.txt", width / 2, height / 2.37, width / 4.465116, height / 4.32, config.getInt("middlePanelTextSize") * width / 1920, true, false), 
       //new Scroller("/resources/texts/middle.txt", 738, 433, 430, 250, 30, .7, true), 
       new TextBox("/resources/RESTapi/times.txt", width / 1.41176, height / 2.9, width / 4.8, height / 4.69565, config.getInt("topRightPanelTextSize") * width / 1920, false, false), 
-      new Scroller("/resources/texts/left.txt", width / 11.1, height / 2.667, width / 4.923, height / 2.3478, config.getFloat("leftPanelTextSize") * width / 1920, config.getInt("leftPanelScrollSpeed"), false),
+      new Scroller("/resources/texts/left.txt", width / 11.1, height / 2.667, width / 4.923, height / 2.3478, config.getInt("leftPanelTextSize") * width / 1920, config.getFloat("leftPanelScrollSpeed"), false),
       //new Scroller("/resources/texts/bottomRight.txt", width / 1.41176, height / 1.8848, width / 4.8, height / 4.69565, config.getInt("bottomRightPanelTextSize") * width / 1920, .7, false), 
 
       new TextBox("/resources/texts/bottom.txt", width / 2, height / 1.05882, 0, 0, 25 * width / 1920, true, true) };
@@ -55,13 +55,13 @@ public class Theme {
     case "PICS_AND_STATIC":
       elements = (Element[]) append(elements, new TextBox("/resources/texts/bottomRight.txt", width / 1.41176, height / 1.87000, width / 4.8, height / 9.3913, config.getInt("bottomRightPanelTextSize") * width / 1920, false, false));
 
-      elements = (Element[])append(elements, new SlideShow("/resources/pics/", width / 2.64099, height / 1.60714, width / 4.23841, height / 4.15385, config.getInt("slideShowSpeed")));
+      elements = (Element[])append(elements, new SlideShow("/resources/pics/", width / 2, height / 1.60714, width / 4.23841, height / 4.15385, config.getInt("slideShowSpeed")));
       elements = (Element[])append(elements, new StaticPic(width / 1.41176, height / 1.463414, width / 4.8, height / 6.35294));
       break;
     case "PICS":
       //elements = (Element[])append(elements, new Scroller("/resources/texts/middle.txt", width / 2.6016, height / 2.4942, width / 4.465116, height / 4.32, config.getFloat("middlePanelTextSize") * width / 1920, .7, true));
       elements = (Element[]) append(elements, new TextBox("/resources/texts/bottomRight.txt", width / 1.41176, height / 1.87000, width / 4.8, height / 9.3913, config.getInt("bottomRightPanelTextSize") * width / 1920, false, false));
-      elements = (Element[])append(elements, new SlideShow("/resources/pics/", width / 2.64099, height / 1.60714, width / 4.23841, height / 4.15385, config.getInt("slideShowSpeed")));
+      elements = (Element[])append(elements, new SlideShow("/resources/pics/", width / 2, height / 1.35, width / 4.02439, height / 4.444444, config.getInt("slideShowSpeed")));
       break;
     default:
       println("failed");

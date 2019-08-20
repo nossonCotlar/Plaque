@@ -38,15 +38,19 @@ public class SlideShow extends Element {
     //showBox();
     if (test[currentPic] == null) return;
     if (test[currentPic].width == 0) return;
+    
+    imageMode(CENTER);
 
-
-    image(test[currentPic], x + (sizeX - test[currentPic].width) / 2, y);
+    image(test[currentPic], x, y);
+    
+    imageMode(CORNER);
   }
 
   private void change() {
     currentSecond = second();
     if (currentSecond / speed != lastSecond) {
       lastSecond = currentSecond / speed;
+      g.removeCache(test[currentPic]);
       current++;
       currentPic++;
       if (currentPic >= 2) currentPic = 0;
