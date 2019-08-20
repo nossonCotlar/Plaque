@@ -10,7 +10,9 @@ public class StaticPic extends Element {
  }
  
  public void update(){
-  image(pic, x + (sizeX - pic.width) / 2, y);
+   imageMode(CENTER);
+  image(pic, x, y);
+  imageMode(CORNER);
  }
  
  public void destroy(){

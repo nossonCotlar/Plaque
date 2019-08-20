@@ -11,7 +11,6 @@ boolean secondChanged;
 int prevSecond;
 boolean updateAvailable;
 boolean license;
-boolean offline;
 JSONObject config;
 JSONObject auth;
 PFont font, font2, font3;

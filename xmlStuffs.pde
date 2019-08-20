@@ -11,13 +11,13 @@ public String readURLFromFile(String file) {
   return loadStrings(file)[0];
 }
 
-public String getRSS(String url) { //gets the XML content of a given URL and returns a string with its contents
+public String getRSS(String url) throws RuntimeException{ //gets the XML content of a given URL and returns a string with its contents
   String[] l = new String[1];
   GetRequest get = new GetRequest(url);
   get.send();
 
   if (get.getContent() == null) {
-    return null;
+    throw new RuntimeException("Couldn't reach stuff");
   }
 
   l[0] = get.getContent();

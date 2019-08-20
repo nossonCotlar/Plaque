@@ -12,15 +12,18 @@ void setup() {
   auth = loadJSONObject("auth.json");
   config = loadJSONObject("config.json");
 
-  
-  if(initFont()) updateInfoDisplay();
-  thread("init");
+  try {
+    initFont();
+    init();
+  } 
+  catch (RuntimeException e) {
+    generalMessage(e.getMessage());
+  }
 }
 
 void draw() {
   detectSecondChanged();
-  if (offline) displayOffline();
-  
+
   if (theme == null) return;
   theme.update();
   if (second() % 2 == 0) displayLicenseWatermark();
