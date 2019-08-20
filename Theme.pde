@@ -40,11 +40,16 @@ public class Theme {
     elements = new Element[] {
       new Clock(width / 2, height / 6.5060, width / 6, height / 15.2112676, true), 
       new AnalogClock(width / 2, width / 7.68, height / 9), 
-      new TextBox("/resources/texts/middle.txt", width / 2, height / 2.37, width / 4.465116, height / 4.32, config.getInt("middlePanelTextSize") * width / 1920, true, false), 
-      new TextBox("/resources/RESTapi/times.txt", width / 1.41176, height / 2.9, width / 4.8, height / 4.69565, config.getInt("topRightPanelTextSize") * width / 1920, false, false), 
-      new Scroller("/resources/texts/left.txt", width / 11.1, height / 2.667, width / 4.923, height / 2.3478, config.getInt("leftPanelTextSize") * width / 1920, config.getFloat("leftPanelScrollSpeed"), false), 
-      new TextBox("/resources/texts/bottomRight.txt", width / 1.41176, height / 1.87000, width / 4.8, height / 9.3913, config.getInt("bottomRightPanelTextSize") * width / 1920, false, false), 
-      new TextBox("/resources/texts/bottom.txt", width / 2, height / 1.05882, 0, 0, 25 * width / 1920, true, true) 
+      // middle / donors:
+      new TextBox("/resources/texts/middle.txt", width / 2, height / 2.37, width / 4.465116, height / 4.32, config.getInt("middlePanelTextSize") * width / 1920, true, false, false), 
+      // halachic times: 
+      new TextBox("/resources/RESTapi/times.txt", width / 1.41176, height / 2.9, width / 4.8, height / 4.69565, config.getInt("topRightPanelTextSize") * width / 1920, false, false, false), 
+      // torah content: 
+      new TextBox("/resources/texts/left.txt", width / 11.36094, height / 3.148688, width / 4.72906, height / 1.85, config.getInt("leftPanelTextSize") * width / 1920, false, false, true), 
+      // annoucements: 
+      new TextBox("/resources/texts/bottomRight.txt", width / 1.41176, height / 1.87000, width / 4.8, height / 9.3913, config.getInt("bottomRightPanelTextSize") * width / 1920, false, false, false), 
+      // memorial:
+      new TextBox("/resources/texts/bottom.txt", width / 2, height / 1.05882, 0, 0, 25 * width / 1920, true, true, false) 
     };
 
     switch(config.getString("graphicSetting")) {

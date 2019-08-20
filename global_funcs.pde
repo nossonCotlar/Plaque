@@ -98,10 +98,6 @@ void generalMessage(String s) {
   noLoop();
 }
 
-void updateInfoDisplay() {
-  generalMessage("Updating Information, Please Wait...");
-}
-
 void displayOffline() {
   generalMessage("Cannot Connect to Servers. Please check connection");
   noLoop();
