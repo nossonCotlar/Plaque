@@ -12,28 +12,20 @@ void setup() {
   auth = loadJSONObject("auth.json");
   config = loadJSONObject("config.json");
 
-  versionCheck();
-  licenseCheck();
-  saveAllPulled();
-
-  initFont();
+  
+  if(initFont()) updateInfoDisplay();
   thread("init");
 }
 
 void draw() {
   detectSecondChanged();
-  if (theme != null) {
-    theme.update();
-    if (second() % 2 == 0) displayLicenseWatermark();
-    updateCheck();
-    displayUpdateAvailable();
-  } else {
-    if (!stop) {
-      updateInfoDisplay();
-      stop = true;
-    }
-  }
   if (offline) displayOffline();
+  
+  if (theme == null) return;
+  theme.update();
+  if (second() % 2 == 0) displayLicenseWatermark();
+  updateCheck();
+  displayUpdateAvailable();
 }
 
 void mousePressed() {

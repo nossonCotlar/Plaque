@@ -15,7 +15,6 @@ public class SlideShow extends Element {
     current = 0;
     currentSecond = byte(second());
     lastSecond = currentSecond;
-    stop = false;
     this.speed = speed;
 
     test = new PImage[2];

@@ -6,11 +6,14 @@ void keyPressed() {
 }
 
 void init() {
+  versionCheck();
+  licenseCheck();
+  saveAllPulled();
+  
   today = new Date();
   theme = new Theme();
-  stop = false;
   
-  delay(4000);
+  //delay(4000);
   System.gc();
 }
 
@@ -51,13 +54,21 @@ void freeStuffUp() {
   //delay(10000);
 }
 
-void initFont() {
-  //PFont font;
+boolean initFont() {
+  try{
   font = createFont("font1.ttf", 45);
   font2 = createFont("font2.otf", 45);
   font3 = createFont("font3.otf", 45);
-  
-  if (font != null) textFont(font);
+  textFont(font3);
+  textFont(font2);
+  textFont(font);
+  } catch (Exception e){
+    textFont(createFont("Calibri", 45));
+    generalMessage("Couldn't load fonts; please ensure fonts are properly stored");
+    noLoop();
+    return false;
+  }
+  return true;
 }
 
 void reset(){
@@ -78,7 +89,7 @@ void detectSecondChanged(){
 void generalMessage(String s){
   background(backColor);
   fill(0);
-  textAlign(CENTER);
+  textAlign(CENTER, CENTER);
   textSize(height / 15);
   text(s, width / 2, height / 2);
   textAlign(LEFT);

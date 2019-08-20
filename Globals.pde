@@ -7,7 +7,6 @@ final String version = "alpha.1.5";
 
 Theme theme;
 
-boolean stop = false;
 boolean secondChanged;
 int prevSecond;
 boolean updateAvailable;
