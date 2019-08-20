@@ -31,7 +31,7 @@ void updateCheck() {
 
 void versionCheck() throws RuntimeException {
   GetRequest get = new GetRequest(config.getString("url") + "/version");
-  
+
   get.send();
 
   if (get.getContent() == null) {
@@ -57,7 +57,7 @@ void freeStuffUp() {
   //delay(10000);
 }
 
-boolean initFont() throws RuntimeException{
+boolean initFont() throws RuntimeException {
   try {
     font = createFont("font1.ttf", 45);
     font2 = createFont("font2.otf", 45);
@@ -111,17 +111,16 @@ public String getPathToParshaContent() {
   return config.getString("url") + "/parsha/" + parsha + "/" + (today.getDay() + 1);
 }
 
-public void setParsha(String url) {
+public void setParsha(String url) throws RuntimeException {
   String text = getTextFromRSS(url);
-
-  parsha = getParsha(text);
+  try {
+    parsha = getParsha(text);
+  } 
+  catch (RuntimeException e) {
+    throw new RuntimeException("Error parsing Parsha Information\n Please contact ShulScreen Support");
+  }
 }
 
 public void initParsha() {
-  try {
-    setParsha("https://www.chabad.org/tools/rss/parsha_rss.xml");
-  } 
-  catch(Exception e) {
-    parsha = "Not Found :(";
-  }
+  setParsha("https://www.chabad.org/tools/rss/parsha_rss.xml");
 }

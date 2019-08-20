@@ -16,7 +16,7 @@ public class Theme {
 
 
 
-    saveDailyQuote("https://www.chabad.org/tools/rss/dailyquote_rss.xml", "/resources/texts/quote.txt");
+    saveDailyQuote("https://www.chabad.org/tools/rss/dailyquote_rss.xml", "/resources/texts/quote.txt"); //this saves quote just to get the Hebrew date info :) 
     initParsha();
     zmanim = new Zmanim("/resources/RESTapi/creds.json");
     zmanim.exportToText("/resources/RESTapi/times.txt");

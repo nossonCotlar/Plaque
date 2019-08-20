@@ -17,7 +17,7 @@ public String getRSS(String url) throws RuntimeException{ //gets the XML content
   get.send();
 
   if (get.getContent() == null) {
-    throw new RuntimeException("Couldn't reach stuff");
+    throw new RuntimeException("Couldn't reach Content servers\n Please Contact ShulScreen Support");
   }
 
   l[0] = get.getContent();
