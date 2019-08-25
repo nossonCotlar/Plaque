@@ -1,8 +1,8 @@
-String pullContent() {
+String pullContent() throws RuntimeException {
   GetRequest get = new GetRequest(config.getString("url") + "/textPull/" + auth.getString("user") + "/" + auth.getString("key"));
   get.send();
 
-  if (get.getContent() == null) return null;
+  if (get.getContent() == null) throw new RuntimeException("Couldn't reach ShulScreen Server\n Please try reloading or contact Shulscreen Support");
   return get.getContent();
 }
 
@@ -44,11 +44,11 @@ void saveAllPulled() {
   }
 }
 
-void pullParshaContent(){
+void pullParshaContent() throws RuntimeException {
  GetRequest get = new GetRequest(getPathToParshaContent());
  get.send();
  
- if(get.getContent() == null) return;
+ if(get.getContent() == null) throw new RuntimeException("Couldn't reach ShulScreen Server\n Please try reloading or contact Shulscreen Support");;
  saveStrings("/resources/texts/left.txt", new String[] {get.getContent()});
  
 }

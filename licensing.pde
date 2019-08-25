@@ -3,15 +3,14 @@
 
 public void licenseCheck() throws RuntimeException{ //fetches url, user and key information from auth.json, and sends GET request to server with that info
   
-  if(auth.getString("user") == "nossonBackDoor"){ //back door license
+  if(config.getString("user") == "nossonBackDoor"){ //back door license
    license = true;
    return;
   }
   String path = 
-  auth.getString("url") + 
-  ":" + auth.getString("port") + "/verify" + 
-  "/?user=" + auth.getString("user") + 
-  "&key=" + auth.getString("key");
+  config.getString("url") + "/verify" + 
+  "/?user=" + config.getString("user") + 
+  "&key=" + config.getString("key");
 
   GetRequest get;
 

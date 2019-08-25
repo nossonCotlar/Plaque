@@ -81,10 +81,11 @@ void reset() {
 void detectSecondChanged() {
   if (prevSecond != second()) {
     secondChanged = true;
+    prevSecond = second();
     return;
   }
-  prevSecond = second();
-  if (!secondChanged) secondChanged = true;
+
+  if (secondChanged) secondChanged = false;
 }
 
 void generalMessage(String s) {
@@ -95,11 +96,6 @@ void generalMessage(String s) {
   textSize(height / 15);
   text(s, width / 2, height / 2);
   textAlign(LEFT);
-  noLoop();
-}
-
-void displayOffline() {
-  generalMessage("Cannot Connect to Servers. Please check connection");
   noLoop();
 }
 
@@ -119,4 +115,24 @@ public void setParsha(String url) throws RuntimeException {
 
 public void initParsha() {
   setParsha("https://www.chabad.org/tools/rss/parsha_rss.xml");
+}
+
+void initJsons() throws RuntimeException {
+  try {
+    config = loadJSONObject("config.json");
+  } 
+  catch (RuntimeException e) {
+    throw new RuntimeException("Error loading configuration file\n Check \"config.json\"");
+  }
+}
+
+void startingInits() {
+  try {
+    initJsons();
+    initFont();
+    init();
+  } 
+  catch (RuntimeException e) {
+    generalMessage(e.getMessage());
+  }
 }

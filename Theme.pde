@@ -33,6 +33,7 @@ public class Theme {
     //printArray(loadStrings(getPathToParshaContent()));
 
     System.gc();
+    loop();
   }
 
 
@@ -63,16 +64,22 @@ public class Theme {
       elements = (Element[])append(elements, new SlideShow("/resources/pics/", width / 2, height / 1.35, width / 4.02439, height / 4.444444, config.getInt("slideShowSpeed")));
       break;
     default:
-      throw new RuntimeException("Incorrect Graphic Setting selected; check config.json");
+      throw new RuntimeException("Unsupported Graphic Setting selected; check config.json");
     }
   }
 
   public void update() {
+    if(secondChanged){
     //background(200);
     showBehind();
     show();
-    for (int i = 0; i < elements.length; i++) elements[i].update();
     showTitles();
+    }
+    try{
+    for (int i = 0; i < elements.length; i++) elements[i].update();
+    } catch (RuntimeException e){
+     generalMessage(e.getMessage()); 
+    }
   }
 
   private void show() {

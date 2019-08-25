@@ -9,16 +9,7 @@ void setup() {
   rectMode(CORNER);
   noStroke();
 
-  auth = loadJSONObject("auth.json");
-  config = loadJSONObject("config.json");
-
-  try {
-    initFont();
-    init();
-  } 
-  catch (RuntimeException e) {
-    generalMessage(e.getMessage());
-  }
+  startingInits();
 }
 
 void draw() {
@@ -27,7 +18,7 @@ void draw() {
   if (theme == null) return;
   theme.update();
   if (second() % 2 == 0) displayLicenseWatermark();
-  updateCheck();
+  if (secondChanged) updateCheck();
   displayUpdateAvailable();
 }
 

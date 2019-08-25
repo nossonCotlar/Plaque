@@ -1,17 +1,15 @@
  //<>//
 public class SlideShow extends Element {
 
-  private PImage[] pics;
   private PImage[] test;
   private File[] files;
   private int currentPic;
   private int currentSecond, lastSecond;
   private int amount, current;
   private int speed;
-  //private boolean stop;
 
-  SlideShow(String path, float x, float y, float sizeX, float sizeY, int speed) {
-    super(x, y, sizeX, sizeY);
+  SlideShow(String path, float x, float y, float sizeX, float sizeY, int speed) throws RuntimeException {
+    super(x, y, sizeX, sizeY); 
     current = 0;
     currentSecond = byte(second());
     lastSecond = currentSecond;
@@ -20,24 +18,24 @@ public class SlideShow extends Element {
     test = new PImage[2];
     files = listFiles(path);
     amount = files.length;
+    if(amount == 0) throw new RuntimeException("No images found in \"pics\" folder\n Place images in the folder or \n select a different Graphic Setting in config.json");
     currentPic = 0;
     current = 0;
 
-
-
-    //loadImages(path);
   }
 
   public void update() {
+    
+    
+    if(secondChanged) show();
     change();
     resizeOnce();
-    show();
   }
 
   private void show() {
     //showBox();
     if (test[currentPic] == null) return;
-    if (test[currentPic].width == 0) return;
+    if (test[currentPic].width == 0 || test[currentPic].width > sizeX) return;
     
     imageMode(CENTER);
 
@@ -46,7 +44,7 @@ public class SlideShow extends Element {
     imageMode(CORNER);
   }
 
-  private void change() {
+  private void change() throws RuntimeException{
     currentSecond = second();
     if (currentSecond / speed != lastSecond) {
       lastSecond = currentSecond / speed;
@@ -55,7 +53,12 @@ public class SlideShow extends Element {
       currentPic++;
       if (currentPic >= 2) currentPic = 0;
       if (current >= amount) current = 0;
+      
+      try{
       test[currentPic] = requestImage(files[current].getPath());
+      } catch (RuntimeException e){
+       throw new RuntimeException("Error reading file in \"pics\" folder\n Please ensure that all files in the folder are \n valid image files"); 
+      }
       //show(); //we call show only when the picture changes to mak sure we don't draw when it's necessary
     }
   }
@@ -64,28 +67,6 @@ public class SlideShow extends Element {
     if (test[currentPic].width > sizeX) {
       test[currentPic].resize(int(sizeX), 0);
       if (test[currentPic].height > sizeY) test[currentPic].resize(0, int(sizeY));
-    }
-  }
-
-  private void loadImages(String path) {
-    files = listFiles(path); //get file array from directory
-    amount = files.length;
-    if (amount == 0) {
-      amount = 1;
-      pics = new PImage[1];
-      pics[0] = loadImage("/resources/data/nothing/nothing.jpg");
-      pics[0].resize(int(sizeX), 0);
-      return;
-    }
-    pics = new PImage[amount]; //create PImage array sized accordingly
-
-    for (int i = 0; i < amount; i++) {
-      pics[i] = loadImage(files[i].getPath()); //load images
-
-      pics[i].resize(int(sizeX), 0); //then resize
-      if (pics[i].height > sizeY) {
-        pics[i].resize(0, int(sizeY));
-      }
     }
   }
 

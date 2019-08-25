@@ -28,6 +28,7 @@ class Clock extends Element {
   }
 
   public void update() {
+    if (!secondChanged) return;
     s = second();
     m = minute();
     h = hour();

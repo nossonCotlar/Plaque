@@ -17,6 +17,7 @@ class AnalogClock extends Element{
   }
 
   void update() {
+    if(!secondChanged) return;
     setAngles();
     show();
   }

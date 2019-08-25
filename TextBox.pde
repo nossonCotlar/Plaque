@@ -22,7 +22,8 @@ public class TextBox extends Element {
 
 
   void update() {
-    show();
+    
+    if (secondChanged) show();
   }
 
   void show() {
@@ -51,7 +52,6 @@ public class TextBox extends Element {
   }
 
   private void fit() {
-    println(textDescent());
     
   }
 }

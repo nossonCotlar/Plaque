@@ -12,7 +12,6 @@ int prevSecond;
 boolean updateAvailable;
 boolean license;
 JSONObject config;
-JSONObject auth;
 PFont font, font2, font3;
 String parsha;
 Date today;
