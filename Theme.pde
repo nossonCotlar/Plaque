@@ -23,7 +23,7 @@ public class Theme {
 
     //saveZmanim(readURLFromFile("/resources/data/url.txt"), "/resources/texts/times.txt");
 
-    pullParshaContent();
+    //pullParshaContent();
 
     initElements();
     } catch (RuntimeException e){
