@@ -34,7 +34,7 @@ void saveAllPulled() {
      case "memorial":
      saveStrings("/resources/texts/bottom.txt", new String[] {t.getString("text")});
      break;
-     case "annoucements":
+     case "announcements":
      saveStrings("/resources/texts/bottomRight.txt", new String[] {t.getString("text")});
      break;
      default:

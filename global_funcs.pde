@@ -8,15 +8,15 @@ void keyPressed() {
 void init() throws RuntimeException {
   try {
     today = new Date();
-    
-    initParsha();
-    mainPost();
-    
-    versionCheck();
-    licenseCheck();
-    saveAllPulled();
 
-    
+    initParsha();
+    setFromMainPost();
+
+    //versionCheck();
+    //licenseCheck();
+    //saveAllPulled();
+
+
     theme = new Theme();
 
     //delay(4000);
@@ -27,6 +27,31 @@ void init() throws RuntimeException {
   }
 }
 
+void setFromMainPost() throws RuntimeException {
+  JSONObject response = mainPost(); 
+  if (response.getBoolean("verify") == true) {
+    license = true;
+  } else license = false;
+
+  if (response.getBoolean("updateAvailable") == true) {
+    updateAvailable = true;
+  } else updateAvailable = false;
+
+  if (response.getString("parsha") != null) {
+    saveStrings("/resources/texts/left.txt", new String[] {response.getString("parsha")});
+  }
+
+  if (response.getString("donors") != null) {
+    saveStrings("/resources/texts/middle.txt", new String[] {response.getString("donors")});
+  }
+  if (response.getString("announcements") != null) {
+    saveStrings("/resources/texts/bottomRight.txt", new String[] {response.getString("announcements")});
+  }
+  if (response.getString("memorial") != null) {
+    saveStrings("/resources/texts/bottom.txt", new String[] {response.getString("memorial")});
+  }
+}
+
 JSONObject mainPost() throws RuntimeException {
   PostRequest post = new PostRequest(config.getString("url") + "/mainPost");
   //println(config.getString("url"));
@@ -34,20 +59,20 @@ JSONObject mainPost() throws RuntimeException {
   post.addData("version", version);
   post.addData("user", config.getString("user"));
   post.addData("key", config.getString("key"));
-  
+
   post.addData("parsha", parsha);
   post.addData("dayOfWeek", String.valueOf(today.getDay() + 1));
-  
+
   post.send();
-  if(post.getContent() == null) throw new RuntimeException("Couldn't reach ShulScreen Server\n Please try reloading or contact Shulscreen Support");
+  if (post.getContent() == null) throw new RuntimeException("Couldn't reach ShulScreen Server\n Please try reloading or contact Shulscreen Support");
   println(post.getContent());
-  
-  try{
-  return parseJSONObject(post.getContent());
-  } catch (Exception e) {
-   throw new RuntimeException("Error communicating with ShulScreen Servers \nPlease contact ShulScreen support"); 
+
+  try {
+    return parseJSONObject(post.getContent());
+  } 
+  catch (Exception e) {
+    throw new RuntimeException("Error communicating with ShulScreen Servers \nPlease contact ShulScreen support");
   }
-  
 }
 
 void updateCheck() {
