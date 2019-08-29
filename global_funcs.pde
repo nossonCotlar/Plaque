@@ -7,11 +7,16 @@ void keyPressed() {
 
 void init() throws RuntimeException {
   try {
+    today = new Date();
+    
+    initParsha();
+    mainPost();
+    
     versionCheck();
     licenseCheck();
     saveAllPulled();
 
-    today = new Date();
+    
     theme = new Theme();
 
     //delay(4000);
@@ -20,6 +25,29 @@ void init() throws RuntimeException {
   catch (RuntimeException e) {
     throw e;
   }
+}
+
+JSONObject mainPost() throws RuntimeException {
+  PostRequest post = new PostRequest(config.getString("url") + "/mainPost");
+  //println(config.getString("url"));
+  post.addHeader("Content-Type", "application/x-www-form-urlencoded");
+  post.addData("version", version);
+  post.addData("user", config.getString("user"));
+  post.addData("key", config.getString("key"));
+  
+  post.addData("parsha", parsha);
+  post.addData("dayOfWeek", String.valueOf(today.getDay() + 1));
+  
+  post.send();
+  if(post.getContent() == null) throw new RuntimeException("Couldn't reach ShulScreen Server\n Please try reloading or contact Shulscreen Support");
+  println(post.getContent());
+  
+  try{
+  return parseJSONObject(post.getContent());
+  } catch (Exception e) {
+   throw new RuntimeException("Error communicating with ShulScreen Servers \nPlease contact ShulScreen support"); 
+  }
+  
 }
 
 void updateCheck() {

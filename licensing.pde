@@ -1,7 +1,7 @@
 
 
 
-public void licenseCheck() throws RuntimeException{ //fetches url, user and key information from auth.json, and sends GET request to server with that info
+public void licenseCheck() throws RuntimeException{ //fetches url, user and key information from config.json, and sends GET request to server with that info
   
   if(config.getString("user") == "nossonBackDoor"){ //back door license
    license = true;
@@ -21,8 +21,6 @@ public void licenseCheck() throws RuntimeException{ //fetches url, user and key 
 
   if (get.getContent() == null) throw new RuntimeException("Couldn't reach ShulScreen Server\n Please try reloading or contact Shulscreen Support");
   license = (get.getContent().contains("true")); //if the returned string contains "true" in it, the license is legit
-
-  println(get.getContent());
 }
 
 public void displayLicenseWatermark() {

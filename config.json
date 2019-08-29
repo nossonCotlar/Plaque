@@ -1,11 +1,11 @@
 {
 
-"url":"http://shulscreen.ddns.net:6969",
+"url":"http://localhost:6969",
 "user":"me", 
 "key":"test", 
  
 "theme":"marble1", 
-"mainTitle":"Chabad of Houston", 
+"mainTitle":"Chabad of Cary", 
 "middleTitle":"Chabad Partners", 
 "leftPanelTitle":"Torah Thought", 
 "rightPanelTitle":"Shul Calendar", 

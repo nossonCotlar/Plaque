@@ -1,5 +1,5 @@
 String pullContent() throws RuntimeException {
-  GetRequest get = new GetRequest(config.getString("url") + "/textPull/" + auth.getString("user") + "/" + auth.getString("key"));
+  GetRequest get = new GetRequest(config.getString("url") + "/textPull/" + config.getString("user") + "/" + config.getString("key"));
   get.send();
 
   if (get.getContent() == null) throw new RuntimeException("Couldn't reach ShulScreen Server\n Please try reloading or contact Shulscreen Support");
