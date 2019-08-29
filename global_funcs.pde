@@ -95,10 +95,11 @@ void versionCheck() throws RuntimeException {
 }
 
 void displayUpdateAvailable() {
+  if(!secondChanged) return;
   if (updateAvailable) {
     textAlign(LEFT, CENTER);
     fill(0);
-    textSize(20);
+    textSize(height / 47);
     text("Update is available, please download update", 30, 30);
   }
 }
