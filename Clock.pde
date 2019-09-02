@@ -1,4 +1,3 @@
-import java.util.Date;
 
 class Clock extends Element {
   private int s, m, h;

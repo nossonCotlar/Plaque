@@ -1,18 +1,20 @@
 class Zmanim { //<>// //<>//
 
   private JSONObject file;
-  private String APIURL, APIUSER, APIKEY, LOCATIONID, METHOD, JSONPATH;
   private Zman[] zmanim;
 
-  Zmanim(String path) {
-    loadCreds(path);
-    saveStringToJSON(JSONPATH, getPostContent());
-    file = loadJSONObject(JSONPATH);
+  Zmanim() throws RuntimeException {
+    file = loadJSONObject("/resources/RESTapi/zmanim.json");
     initZmanim();
+    try{
+    exportToText("/resources/RESTapi/times.txt");
+    } catch (Exception e){
+     throw new RuntimeException("Error reading zmanim content"); 
+    }
     //printZmanim();
   }
 
-  public void exportToText(String path) {
+  private void exportToText(String path) {
     if(zmanim == null) {
     saveStrings(path, new String[] {"Not Found :("});
     return;
@@ -21,46 +23,18 @@ class Zmanim { //<>// //<>//
 
     for (int i = 0; i < zmanim.length; i++) {
       if(zmanim[i].getTimeString() == "missing"){
-        temp[i] = "";
+        temp = shorten(temp);
         continue;
       }
       temp[i] = zmanim[i].getName() + " - " + zmanim[i].getTimeString();
     }
+    
+   JSONObject timeObj = file.getJSONObject("Time");
+   if(timeObj.getBoolean("IsRoshChodesh") == true){
+    temp = append(temp, "Rosh Chodesh"); 
+   }
 
     saveStrings(path, temp);
-  }
-
-  private void loadCreds(String path) {
-    JSONObject creds = loadJSONObject(path);
-    APIURL = creds.getString("APIURL");
-    APIUSER = creds.getString("APIUSER");
-    APIKEY = creds.getString("APIKEY");
-    LOCATIONID = creds.getString("LOCATIONID");
-    METHOD = creds.getString("METHOD");
-    JSONPATH = creds.getString("JSONPATH");
-    //println(APIURL);
-  }
-
-  private String getPostContent() {
-    PostRequest post = new PostRequest(APIURL + "/" + METHOD);
-    post.addData("coding", "JS");
-    post.addData("language", "en");
-    post.addData("locationid", LOCATIONID);
-    post.addData("key", APIKEY);
-    post.addData("user", APIUSER);
-    post.send();
-    if(post.getContent() == null) return null;
-    return post.getContent();
-  }
-
-  public void saveStringToJSON(String path, String s) {
-    if(s == null){
-     JSONObject t = parseJSONObject("{}"); 
-     saveJSONObject(t, path);
-     return;
-    }
-    JSONObject json = parseJSONObject(s);
-    saveJSONObject(json, path);
   }
 
   private void initZmanim() {

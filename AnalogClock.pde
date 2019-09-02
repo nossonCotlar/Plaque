@@ -4,7 +4,6 @@ class AnalogClock extends Element{
   private int hr, mn, sc;
   private float scAng, mnAng, hrAng;
   private float scStroke, mnStroke, hrStroke;
-  private int lastSecond;
 
 
 
@@ -13,7 +12,6 @@ class AnalogClock extends Element{
     this.rad = rad;
     //setAngles();
     setStrokeWeights();
-    lastSecond = second();
   }
 
   void update() {
@@ -58,8 +56,7 @@ class AnalogClock extends Element{
   }
 
   void setAngles() {
-    if(second() == lastSecond) return; //makes sure we don't call thsi between seconds unnecessarily
-    lastSecond = second();
+    if(!secondChanged) return;
     
     hr = hour();
     mn = minute();

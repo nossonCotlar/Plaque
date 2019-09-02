@@ -1,8 +1,9 @@
 {
 
-"url":"http://shulscreen.ddns.net:6969",
+"url":"http://localhost:6969",
 "user":"me", 
 "key":"test", 
+"postalCode":"77071", 
  
 "theme":"marble1", 
 "mainTitle":"Chabad of Cary", 
@@ -11,7 +12,7 @@
 "rightPanelTitle":"Shul Calendar", 
 "updateTime":3, 
 "graphicSetting":"PICS_AND_STATIC", 
-"leftPanelTextSize":17,  
+"leftPanelTextSize":19,  
 "middlePanelTextSize":30, 
 "topRightPanelTextSize":30,
 "bottomRightPanelTextSize":30, 
