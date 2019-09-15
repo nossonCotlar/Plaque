@@ -22,8 +22,6 @@ class Clock extends Element {
     s = second();
     m = minute();
     h = hour();
-
-    println(getPathToParshaContent());
   }
 
   public void update() {
