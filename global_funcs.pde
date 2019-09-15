@@ -30,18 +30,6 @@ void updateCheck() {
   }
 }
 
-void versionCheck() throws RuntimeException {
-  GetRequest get = new GetRequest(config.getString("url") + "/version");
-
-  get.send();
-
-  if (get.getContent() == null) {
-    throw new RuntimeException("Couldn't reach ShulScreen Server\n Please try reloading or contact Shulscreen Support");
-  }
-  if (get.getContent().contains(version)) return;
-  updateAvailable = true;
-}
-
 void displayUpdateAvailable() {
   if (!secondChanged) return;
   if (updateAvailable) {
@@ -77,7 +65,7 @@ boolean initFont() throws RuntimeException {
 void reset() {
   freeStuffUp();
   delay(2000);
-  init();
+  try{ init(); } catch(Exception e) {errMsg = e.getMessage();}
 }
 
 void detectSecondChanged() {
@@ -133,8 +121,26 @@ void startingInits() {
     initJsons();
     initFont();
     init();
+    //thread("init");
   } 
   catch (RuntimeException e) {
-    generalMessage(e.getMessage());
+    errMsg = e.getMessage();
+    //generalMessage(e.getMessage());
+    println(e.getMessage());
+  }
+}
+
+void waiting(){
+  background(backColor);
+  fill(0);
+  textSize(height / 15);
+  textAlign(CENTER, CENTER);
+  text("ShulScreen is fetching your information\nThanks for waiting", width / 2, height / 2);
+}
+
+void err(){
+  if(errMsg != null){
+    background(backColor);
+   generalMessage(errMsg); 
   }
 }

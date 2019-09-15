@@ -3,17 +3,22 @@
 
 void setup() {
   fullScreen();
+  surface.setTitle("ShulScreen");
   //size(1920, 1080);
 
   frameRate(30); 
   rectMode(CORNER);
   noStroke();
 
-  startingInits();
+  thread("startingInits");
+  waiting();
+  //startingInits();
+  
 }
 
 void draw() {
   detectSecondChanged();
+  err();
 
   if (theme == null) return;
   theme.update();
