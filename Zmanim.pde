@@ -5,6 +5,7 @@ class Zmanim { //<>// //<>//
 
   Zmanim() throws RuntimeException {
     file = loadJSONObject("/resources/RESTapi/zmanim.json");
+    errCatch();
     initZmanim();
     try{
     exportToText("/resources/RESTapi/times.txt");
@@ -52,6 +53,18 @@ class Zmanim { //<>// //<>//
   private void printZmanim() {
     for (Zman z : zmanim) {
       println(z.getName() + " - " + z.getTimeString());
+    }
+  }
+  
+  private void errCatch(){
+    String err; 
+    try{
+    err = file.getString("ErrMsg");
+    } catch(Exception E){
+      err = null;
+    }
+    if(err != null){
+     throw new RuntimeException("Error with Zmanim: " +  file.getString("ErrMsg"));
     }
   }
 }

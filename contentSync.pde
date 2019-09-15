@@ -37,6 +37,8 @@ JSONObject mainPost() throws RuntimeException {
   post.addData("key", config.getString("key"));
   //zmain stuff
   post.addData("postalCode", config.getString("postalCode"));
+  post.addData("latitude", config.getString("latitude"));
+  post.addData("longitude", config.getString("longitude"));
   post.addData("dateString", year() + "-" + month() + "-" + day());
 //parsha stuff
   post.addData("parsha", parsha);
@@ -44,7 +46,7 @@ JSONObject mainPost() throws RuntimeException {
 
   post.send();
   if (post.getContent() == null) throw new RuntimeException("Couldn't reach ShulScreen Server\n Please try reloading or contact Shulscreen Support");
-  //println(post.getContent());
+  println(post.getContent());
 
   try {
     return parseJSONObject(post.getContent());

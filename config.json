@@ -4,6 +4,8 @@
 "user":"me", 
 "key":"test", 
 "postalCode":"77071", 
+"latitude":"", 
+"longitude":"", 
  
 "theme":"marble1", 
 "mainTitle":"Chabad of Cary", 
@@ -12,7 +14,7 @@
 "rightPanelTitle":"Shul Calendar", 
 "updateTime":3, 
 "graphicSetting":"PICS_AND_STATIC", 
-"leftPanelTextSize":19,  
+"leftPanelTextSize":18,  
 "middlePanelTextSize":30, 
 "topRightPanelTextSize":30,
 "bottomRightPanelTextSize":30, 
